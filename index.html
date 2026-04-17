@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Md Samshad Hussain Ansari | Academic Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Modern CSS Reset & Variables */
+        :root {
+            /* Colors */
+            --bg-base: #050914; /* Deep, luxurious navy/charcoal */
+            --bg-surface: #0a1224; /* Elevated surface */
+            --bg-surface-light: #111a30; /* Lighter surface for hover states */
+            --accent-gold: #D4AF37;
+            --accent-glow: rgba(212, 175, 55, 0.3);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --border-subtle: rgba(255, 255, 255, 0.05);
+            --border-accent: rgba(212, 175, 55, 0.2);
+
+            /* Typography */
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'Space Mono', monospace;
+
+            /* Transitions */
+            --transition-smooth: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-base);
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            line-height: 1.2;
+            color: #ffffff;
+        }
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-gold), transparent);
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        a:hover {
+            text-shadow: 0 0 10px var(--accent-glow);
+            color: #fce883;
+        }
+
+        .mono-label {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-gold);
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        /* Layout & Structure */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        /* Glassmorphism Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            z-index: 1000;
+            transition: var(--transition-smooth);
+            background: rgba(5, 9, 20, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        nav.scrolled {
+            padding: 1rem 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            background: rgba(5, 9, 20, 0.95);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-logo span {
+            color: var(--accent-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-gold);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 5rem;
+            overflow: hidden;
+        }
+
+        .hero-bg-glow {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, rgba(5, 9, 20, 0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+            z-index: 1;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-title span {
+            color: var(--text-secondary);
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            color: var(--accent-gold);
+            margin-bottom: 3rem;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-btn-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background: var(--accent-gold);
+            color: var(--bg-base);
+            border: 1px solid var(--accent-gold);
+            font-weight: 700;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: translateY(-2px);
+            color: var(--bg-base);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-accent);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-gold);
+            background: rgba(212, 175, 55, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .photo-placeholder {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-accent);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        .photo-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            animation: spin 20s linear infinite;
+        }
+
+        .photo-placeholder::after {
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: -40px;
+            right: -40px;
+            bottom: -40px;
+            border-radius: 50%;
+            border: 1px dashed rgba(212, 175, 55, 0.15);
+            animation: spin-reverse 30s linear infinite;
+        }
+
+        .photo-placeholder span {
+            font-family: var(--font-mono);
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+            opacity: 0.6;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes spin-reverse {
+            100% { transform: rotate(-360deg); }
+        }
+
+        /* Generic Text Grids */
+        .text-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 5rem;
+            align-items: start;
+        }
+        
+        .full-text-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            max-width: 1000px;
+        }
+
+        .about-text p, .statement-text p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .statement-text p strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-surface);
+            padding: 2.5rem;
+            border: 1px solid var(--border-subtle);
+            border-top: 2px solid var(--accent-gold);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: var(--border-accent);
+        }
+
+        .stat-num {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+        }
+
+        /* Research Themes */
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .theme-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            padding: 3rem 2rem;
+            position: relative;
+            transition: var(--transition-smooth);
+            overflow: hidden;
+            cursor: default;
+        }
+
+        .theme-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, var(--accent-glow) 0%, transparent 70%);
+            opacity: 0;
+            transition: var(--transition-smooth);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .theme-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+        }
+
+        .theme-card:hover::before {
+            opacity: 0.5;
+        }
+
+        .theme-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .theme-icon {
+            font-family: var(--font-mono);
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.05);
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+            transition: var(--transition-bounce);
+        }
+
+        .theme-card:hover .theme-icon {
+            color: rgba(212, 175, 55, 0.15);
+            transform: scale(1.1);
+        }
+
+        /* Publications Section */
+        .pub-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .pub-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            padding: 2rem;
+            border-left: 3px solid var(--accent-gold);
+            transition: var(--transition-smooth);
+        }
+
+        .pub-card:hover {
+            background: var(--bg-surface-light);
+            transform: translateX(10px);
+            border-color: var(--border-accent);
+        }
+
+        .pub-title {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 0.8rem;
+            font-family: var(--font-heading);
+            font-weight: 600;
+        }
+
+        .pub-meta {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .pub-journal {
+            color: var(--accent-gold);
+            background: rgba(212, 175, 55, 0.08);
+            padding: 0.2rem 0.6rem;
+            border-radius: 2px;
+        }
+
+        /* Details / Expandable */
+        details {
+            margin-top: 1rem;
+        }
+        
+        details summary {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--accent-gold);
+            cursor: pointer;
+            outline: none;
+            display: inline-block;
+            transition: var(--transition-smooth);
+        }
+        
+        details summary:hover {
+            color: #fff;
+        }
+
+        details p {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            padding: 1rem;
+            background: rgba(0,0,0,0.2);
+            border-left: 1px solid var(--accent-gold);
+        }
+
+        /* Career & Postdoc */
+        .vision-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .vision-box {
+            padding: 3rem;
+            border: 1px solid var(--border-subtle);
+            background: linear-gradient(145deg, var(--bg-surface), var(--bg-base));
+        }
+
+        .vision-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+        }
+
+        .vision-list {
+            list-style: none;
+        }
+
+        .vision-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .vision-list li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-family: var(--font-mono);
+        }
+
+        /* Skills & Teaching Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 0.5rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .tag {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-accent);
+            padding: 0.6rem 1.2rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            transition: var(--transition-smooth);
+        }
+
+        .tag:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--accent-gold);
+            transform: translateY(-2px);
+        }
+
+        /* Achievements */
+        .achievement-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .achievement-icon {
+            color: var(--accent-gold);
+            font-size: 2rem;
+            font-family: var(--font-heading);
+            line-height: 1;
+        }
+
+        /* Contact Section */
+        .contact-wrapper {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            padding: 6rem;
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-link span {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .contact-link a {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .contact-link a:hover {
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-subtle);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            opacity: 0.5;
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            h2 { font-size: 2.5rem; }
+            .hero-title { font-size: 3.5rem; }
+            .photo-placeholder { width: 320px; height: 320px; }
+            .text-grid, .vision-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .contact-wrapper { padding: 4rem 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 5rem 0; }
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-image-container { order: -1; }
+            .hero-btn-group { justify-content: center; }
+            h2::after { left: 50%; transform: translateX(-50%); }
+            
+            /* Mobile Nav */
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 100%;
+                background: var(--bg-base);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: var(--transition-smooth);
+            }
+            .nav-links.open { right: 0; }
+            .nav-links a { font-size: 1.5rem; }
+            
+            .hamburger {
+                display: block;
+                z-index: 1001;
+                cursor: pointer;
+            }
+            .hamburger span {
+                display: block;
+                width: 30px;
+                height: 2px;
+                background: #fff;
+                margin-bottom: 6px;
+                transition: var(--transition-smooth);
+            }
+        }
+        @media (min-width: 769px) {
+            .hamburger { display: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container nav-inner">
+            <a href="#" class="nav-logo">Dr. MSA<span>.</span></a>
+            <div class="hamburger" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#statements">Statements</a></li>
+                <li><a href="#research">Themes</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#vision">Vision</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg-glow"></div>
+        <div class="container hero-grid">
+            <div class="hero-content reveal">
+                <div class="mono-label">Assistant Professor (Mathematics) & PhD Graduate (IIT Mandi)</div>
+                <h1 class="hero-title">Md Samshad <br><span>Hussain Ansari</span></h1>
+                <p class="hero-subtitle">Mathematical Control | Fractional Systems | Neural Networks</p>
+                
+                <div class="hero-btn-group">
+                    <a href="#statements" class="btn btn-primary">View Statements</a>
+                    <a href="#" class="btn btn-outline">Download CV</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+            <div class="hero-visual reveal delay-2">
+                <div class="photo-placeholder">
+                    <img src="profile.jpg" alt="Dr. Md Samshad Hussain Ansari" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; z-index: 1; position: relative;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container text-grid">
+            <div class="about-text reveal">
+                <div class="mono-label">Research Profile</div>
+                <h2>Academic Focus</h2>
+                <p>My research lies at the intersection of <strong>nonlinear dynamical systems, fractional calculus, and neural network modeling.</strong> I focus on controllability, synchronization, and stability of fractional-order systems, particularly quaternion-valued neural networks.</p>
+                <p>My work develops rigorous theoretical frameworks and applies them to complex dynamical behaviors in networked and multi-agent systems, striving to bridge the gap between abstract mathematical theory and applied engineering solutions.</p>
+                
+                <div style="margin-top: 3rem;">
+                    <div class="mono-label" style="color:#fff;">Previous Roles</div>
+                    <ul class="vision-list" style="margin-bottom: 0;">
+                        <li>Senior Research Fellow, IIT Mandi</li>
+                        <li>Junior Research Fellow, IIT Mandi</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="stats-grid reveal delay-2">
+                <div class="stat-card">
+                    <div class="stat-num">7+</div>
+                    <div class="stat-label">Publications</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-num">4+</div>
+                    <div class="stat-label">Years Research Exp</div>
+                </div>
+                <div class="stat-card" style="grid-column: span 2;">
+                    <div class="stat-num" style="font-size: 2rem; margin-bottom: 1rem;">Reviewer For Top Journals</div>
+                    <div class="stat-label" style="color: var(--text-secondary); text-transform:none;">IEEE Trans. on Cybernetics, Neural Networks, Fuzzy Sets and Systems</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Statements Section -->
+    <section id="statements" style="background-color: var(--bg-surface); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+        <div class="container full-text-grid">
+            
+            <!-- Research Statement -->
+            <div class="statement-text reveal">
+                <div class="mono-label">Vision & Impact</div>
+                <h2>Research Statement</h2>
+                <p>My research vision centers on formulating rigorous analytical frameworks to master the behavior of complex, interconnected networks—a pivotal challenge in modern engineering and applied mathematics. By integrating <strong>fractional calculus</strong> with <strong>quaternion algebra</strong>, I have established new paradigms for the stability, controllability, and projective synchronization of fractional-order dynamical systems. This foundational work successfully addresses the multi-dimensional complexities inherent in nonidentical and competitive neural networks.</p>
+                
+                <p>Looking forward, my research strategy is inherently highly interdisciplinary and structurally geared toward securing competitive external funding. I am actively expanding my analytical frameworks into data-driven domains, specifically <strong>Physics-Informed Neural Networks (PINNs)</strong>. The integration of fractional-order modeling with machine learning holds immense potential for creating resilient, adaptable control systems necessary for next-generation intelligent transportation, smart grids, and autonomous multi-agent robotics. My goal is to lead a highly collaborative research laboratory that bridges deep mathematical theory with transformative computational applications.</p>
+            </div>
+            
+            <!-- Doctoral Research & Thesis -->
+            <div class="statement-text reveal delay-1" style="margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--border-accent);">
+                <div class="mono-label">Thesis Summary</div>
+                <h2>Doctoral Research & Projects</h2>
+                <p><strong>Thesis Title:</strong> Synchronization of Fractional-Order Quaternion-Valued Neural Networks</p>
+                <p><strong>Supervisor:</strong> Prof. Muslim Malik | <strong>Institution:</strong> Indian Institute of Technology (IIT) Mandi</p>
+                <p>During my doctoral tenure, I successfully established novel mathematical approaches for the synchronization of complex neural networks operating within the quaternion field. A significant breakthrough of my thesis involved developing sliding mode control techniques and asymptotic adaptive projective synchronization methods tailored for nonidentical fractional-order systems.</p>
+                <p>This rigorous exploration resulted in robust theoretical proofs addressing the inconsistencies of fractional orders in hypercomplex spaces, yielding over 7 high-impact peer-reviewed publications in prestigious international journals such as the <em>European Physical Journal Plus</em> and the <em>International Journal of Computer Mathematics</em>.</p>
+            </div>
+
+            <!-- Teaching Statement -->
+            <div class="statement-text reveal delay-2" style="margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--border-accent);">
+                <div class="mono-label">Pedagogy</div>
+                <h2>Teaching Statement</h2>
+                <p>I view teaching as a dynamic, interactive process of empowering students to connect abstract mathematical concepts with tangible, real-world applications. My pedagogical philosophy is rooted in clarity, active learning, and technological integration. I believe that advanced mathematical literacy is critical for solving modern engineering and computational problems.</p>
+                
+                <p>In the classroom, I employ a modern, inquiry-based teaching approach that supplements rigorous theoretical instruction with computational tools such as <strong>MATLAB</strong> and <strong>Python</strong>. By fostering an inclusive, intellectually stimulating environment, I encourage students to not only master fundamental algorithms but to critically analyze the underlying logic. Whether teaching introductory Linear Algebra or advanced Differential Equations, my objective remains consistent: to equip the next generation of engineers and applied scientists with the analytical rigor required to excel independently in an ever-evolving technological landscape.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Research Themes Section -->
+    <section id="research">
+        <div class="container">
+            <div class="mono-label reveal">Core Areas</div>
+            <h2 class="reveal">Research Themes</h2>
+            
+            <div class="theme-grid">
+                <div class="theme-card reveal delay-1">
+                    <h3>Fractional Systems</h3>
+                    <p>Analysis utilizing Caputo, Prabhakar, and Atangana–Baleanu derivatives for complex modeling.</p>
+                    <div class="theme-icon">01</div>
+                </div>
+                
+                <div class="theme-card reveal delay-2">
+                    <h3>Neural Networks</h3>
+                    <p>Focusing on the complex dynamics and synchronization of Quaternion-Valued Neural Networks.</p>
+                    <div class="theme-icon">02</div>
+                </div>
+                
+                <div class="theme-card reveal delay-3">
+                    <h3>Control Theory</h3>
+                    <p>Developing rigorous Controllability & Stability Theory for dynamic, multi-agent processes.</p>
+                    <div class="theme-icon">03</div>
+                </div>
+                
+                <div class="theme-card reveal delay-1">
+                    <h3>Switched Systems</h3>
+                    <p>Investigating the stability and controllability of complex switched nonlinear systems.</p>
+                    <div class="theme-icon">04</div>
+                </div>
+                
+                <div class="theme-card reveal delay-2">
+                    <h3>Multi-Agent Systems</h3>
+                    <p>Synchronization and coordination among distributed networked agents.</p>
+                    <div class="theme-icon">05</div>
+                </div>
+                
+                <div class="theme-card reveal delay-3">
+                    <h3>DAEs & Stochastic</h3>
+                    <p>Differential-Algebraic Equations and emerging research in Stochastic Abstract Differential Equations.</p>
+                    <div class="theme-icon">06</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" style="background-color: var(--bg-surface);">
+        <div class="container">
+            <div class="mono-label reveal">Selected Output</div>
+            <h2 class="reveal">Publications</h2>
+            
+            <div class="pub-list">
+                <!-- Pub 1 -->
+                <div class="pub-card reveal delay-1">
+                    <h3 class="pub-title">Controllability of Prabhakar fractional dynamical systems</h3>
+                    <div class="pub-meta">
+                        <span class="pub-journal">Qualitative Theory of Dynamical Systems (2024)</span>
+                        <span>DOI: 10.1007/s12346-023-00919-4</span>
+                    </div>
+                    <details>
+                        <summary>View Details</summary>
+                        <p>Published in Qualitative Theory of Dynamical Systems, this paper establishes novel controllability conditions for fractional dynamical systems utilizing the Prabhakar derivative framework.</p>
+                    </details>
+                </div>
+                
+                <!-- Pub 2 -->
+                <div class="pub-card reveal delay-2">
+                    <h3 class="pub-title">Projective synchronization of fractional-order quaternion-valued neural networks</h3>
+                    <div class="pub-meta">
+                        <span class="pub-journal">Chinese Journal of Physics (2024)</span>
+                        <span>DOI: 10.1016/j.cjph.2024.02.032</span>
+                    </div>
+                    <details>
+                        <summary>View Details</summary>
+                        <p>Addresses the synchronization dynamics of uncertain competitive neural networks defined in the quaternion field.</p>
+                    </details>
+                </div>
+                
+                <!-- Pub 3 -->
+                <div class="pub-card reveal delay-3">
+                    <h3 class="pub-title">Finite-time synchronization via sliding mode control</h3>
+                    <div class="pub-meta">
+                        <span class="pub-journal">International Journal of Computer Mathematics (2024)</span>
+                        <span>DOI: 10.1080/00207160.2024.2383198</span>
+                    </div>
+                </div>
+                
+                <!-- Pub 4 -->
+                <div class="pub-card reveal delay-1">
+                    <h3 class="pub-title">Quasi-projective synchronization in quaternion field</h3>
+                    <div class="pub-meta">
+                        <span class="pub-journal">Physica Scripta (2024)</span>
+                        <span>DOI: 10.1088/1402-4896/ad9c26</span>
+                    </div>
+                </div>
+                
+                <!-- Pub 5 -->
+                <div class="pub-card reveal delay-2">
+                    <h3 class="pub-title">Projective synchronization with Mittag-Leffler kernel</h3>
+                    <div class="pub-meta">
+                        <span class="pub-journal">International Journal of General Systems (2025)</span>
+                        <span>DOI: 10.1080/03081079.2025.2457550</span>
+                    </div>
+                </div>
+                
+                <!-- Pub 6 -->
+                <div class="pub-card reveal delay-3">
+                    <h3 class="pub-title">Controllability of impulsive fractional dynamical systems</h3>
+                    <div class="pub-meta">
+                        <span class="pub-journal">Fractional Calculus and Applied Analysis (2025)</span>
+                        <span>DOI: 10.1007/s13540-025-00393-6</span>
+                    </div>
+                </div>
+                
+                <!-- Pub 7 -->
+                <div class="pub-card reveal delay-1">
+                    <h3 class="pub-title">Adaptive synchronization of fractional inertial neural networks</h3>
+                    <div class="pub-meta">
+                        <span class="pub-journal">European Physical Journal Plus (2025)</span>
+                        <span>DOI: 10.1140/epjp/s13360-025-06840-w</span>
+                    </div>
+                </div>
+                
+                <!-- Other Pubs -->
+                <div class="pub-card reveal delay-2" style="border-left-color: var(--text-secondary);">
+                    <h3 class="pub-title" style="color:var(--text-secondary);">Book Chapter (Springer, Accepted)</h3>
+                    <div class="pub-meta">
+                        <span class="pub-journal" style="background: rgba(255,255,255,0.05); color: var(--text-primary);">Terminal value problem of Prabhakar fractional differential equation</span>
+                    </div>
+                </div>
+                
+                <div class="pub-card reveal delay-3" style="border-left-color: var(--text-secondary);">
+                    <h3 class="pub-title" style="color:var(--text-secondary);">1 Paper Under Review</h3>
+                    <div class="pub-meta">
+                        <span>Synchronization of nonidentical quaternion-valued inertial neural networks with different fractional orders using sliding mode control</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Vision & Achievements -->
+    <section id="vision">
+        <div class="container">
+            <div class="vision-grid">
+                
+                <!-- Career Goals -->
+                <div class="vision-content reveal">
+                    <div class="mono-label">Future Trajectory</div>
+                    <h2>Career Vision</h2>
+                    
+                    <div class="vision-box" style="margin-bottom: 2rem;">
+                        <h3>Postdoctoral Research Goals</h3>
+                        <p>Focusing on highly interdisciplinary research to bridge pure mathematics with applied engineering concepts.</p>
+                        <ul class="vision-list">
+                            <li>Physics-Informed Neural Networks (PINNs)</li>
+                            <li>Data-Driven Control & Machine Learning</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="vision-box">
+                        <h3>Target Institutions</h3>
+                        <ul class="vision-list">
+                            <li>NYU Abu Dhabi</li>
+                            <li>Humboldt Research Fellowship (Germany)</li>
+                            <li>Top-tier universities in USA, Europe, and India</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Achievements -->
+                <div class="achievements-content reveal delay-2">
+                    <div class="mono-label">Recognition</div>
+                    <h2>Achievements</h2>
+                    
+                    <div style="margin-top: 3rem;">
+                        <div class="achievement-item">
+                            <div class="achievement-icon">01</div>
+                            <div>
+                                <h4 style="font-size: 1.3rem; margin-bottom: 0.3rem;">CSIR-UGC NET (JRF)</h4>
+                                <p>All-India Rank 82</p>
+                            </div>
+                        </div>
+                        
+                        <div class="achievement-item">
+                            <div class="achievement-icon">02</div>
+                            <div>
+                                <h4 style="font-size: 1.3rem; margin-bottom: 0.3rem;">GATE (Mathematics)</h4>
+                                <p>All-India Rank 641</p>
+                            </div>
+                        </div>
+                        
+                        <div class="achievement-item">
+                            <div class="achievement-icon">03</div>
+                            <div>
+                                <h4 style="font-size: 1.3rem; margin-bottom: 0.3rem;">International Travel Grant</h4>
+                                <p>Awarded ₹100,000 for AIMS Conference, NYU Abu Dhabi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills & Teaching -->
+    <section id="skills" style="background-color: var(--bg-surface);">
+        <div class="container">
+            <div class="mono-label reveal">Capabilities</div>
+            <h2 class="reveal">Skills, Teaching & Service</h2>
+            
+            <div class="skills-grid reveal delay-1">
+                <div class="skill-category">
+                    <h3>Teaching Experience</h3>
+                    <ul class="vision-list" style="margin-top: 1rem;">
+                        <li>Linear Algebra</li>
+                        <li>Engineering Mathematics</li>
+                        <li>Control Theory</li>
+                        <li>Probability & Statistics</li>
+                        <li>Differential Equations</li>
+                        <li>Mathematical Foundations of Data Science</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Academic Service & Collaborations</h3>
+                    <p style="margin-bottom: 1rem; color: var(--text-secondary); font-size: 0.95rem;">Active peer reviewer and academic contributor demonstrating deep field engagement and collaboration potential.</p>
+                    <ul class="vision-list" style="margin-top: 1rem;">
+                        <li><strong>Reviewer:</strong> IEEE Trans. on Cybernetics</li>
+                        <li><strong>Reviewer:</strong> Neural Networks</li>
+                        <li><strong>Reviewer:</strong> Fuzzy Sets and Systems</li>
+                        <li>International conference seminars and academic volunteering.</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
+                    <div class="tags" style="margin-bottom: 2rem;">
+                        <span class="tag">MATLAB</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">LaTeX</span>
+                    </div>
+                    
+                    <h3>Areas of Expertise</h3>
+                    <div class="tags">
+                        <span class="tag">Control Theory</span>
+                        <span class="tag">Fractional Calculus</span>
+                        <span class="tag">Numerical Analysis</span>
+                        <span class="tag">System Synchronization</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- References -->
+    <section id="references">
+        <div class="container text-grid" style="grid-template-columns: 1fr; max-width: 1000px; text-align: center;">
+            <div class="reveal">
+                <div class="mono-label">Professional Network</div>
+                <h2>Academic References</h2>
+                <p>Strong recommendations are available upon request from the following distinguished academic referees:</p>
+                
+                <div class="stats-grid" style="margin-top: 3rem; text-align: left;">
+                    <div class="stat-card">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: #fff;">Prof. Muslim Malik</h3>
+                        <p style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-gold); margin-bottom: 1rem;">PhD Supervisor</p>
+                        <p style="margin-bottom: 0;">School of Mathematical and Statistical Sciences,<br> IIT Mandi, India</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: #fff;">Dr. Asif Khan</h3>
+                        <p style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-gold); margin-bottom: 1rem;">Associate Professor</p>
+                        <p style="margin-bottom: 0;">Department of Mathematics,<br> Aligarh Muslim University, India</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background-color: var(--bg-surface);">
+        <div class="container">
+            <div class="contact-wrapper reveal">
+                <div class="mono-label">Get In Touch</div>
+                <h2>Connect & Collaborate</h2>
+                <p style="max-width: 600px; margin: 0 auto;">Currently open to postdoctoral roles and academic positions worldwide. Reach out to discuss research collaborations or faculty opportunities.</p>
+                
+                <div class="contact-links">
+                    <div class="contact-link">
+                        <span>Email</span>
+                        <a href="mailto:mdsambussain1996@gmail.com">mdsambussain1996@gmail.com</a>
+                    </div>
+                    <div class="contact-link">
+                        <span>Google Scholar</span>
+                        <a href="https://scholar.google.com/citations?user=3b2jd4EAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer">View Profile</a>
+                    </div>
+                    <div class="contact-link">
+                        <span>ORCID</span>
+                        <a href="https://orcid.org/0000-0002-7757-3216" target="_blank" rel="noopener noreferrer">View Profile</a>
+                    </div>
+                    <div class="contact-link">
+                        <span>ResearchGate</span>
+                        <a href="https://www.researchgate.net/profile/Md-Samshad-Ansari" target="_blank" rel="noopener noreferrer">View Profile</a>
+                    </div>
+                </div>
+                
+                <a href="mailto:mdsambussain1996@gmail.com" class="btn btn-primary" style="margin-top: 4rem;">Send an Email</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Dr. Md Samshad Hussain Ansari. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        });
+
+        // Mobile Menu
+        const hamburger = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+        
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('open'));
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            });
+        }, revealOptions);
+        
+        revealElements.forEach(el => revealOnScroll.observe(el));
+    </script>
+</body>
+</html>
