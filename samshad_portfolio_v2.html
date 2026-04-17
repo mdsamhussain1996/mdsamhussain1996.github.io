@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Md Samshad Hussain Ansari — Mathematician & Control Theorist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=JetBrains+Mono:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --navy: #0b1120;
+  --navy2: #131d33;
+  --navy3: #1a2540;
+  --navy4: #222f50;
+  --gold: #c8962a;
+  --gold-light: #e5b84a;
+  --gold-dim: rgba(200,150,42,0.15);
+  --gold-border: rgba(200,150,42,0.3);
+  --white: #f0ede6;
+  --white2: #d8d4ca;
+  --muted: #8a9ab8;
+  --faint: rgba(255,255,255,0.06);
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Lato', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--navy);color:var(--white);font-family:var(--sans);font-size:17px;line-height:1.75;overflow-x:hidden;}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--navy);}
+::-webkit-scrollbar-thumb{background:var(--gold);}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 4rem;
+  background:rgba(11,17,32,0.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--gold-border);
+}
+.nav-logo{
+  font-family:var(--mono);font-size:0.72rem;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold);
+}
+nav ul{list-style:none;display:flex;gap:2.5rem;}
+nav a{
+  font-family:var(--mono);font-size:0.68rem;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  transition:color 0.2s;position:relative;
+}
+nav a::after{
+  content:'';position:absolute;bottom:-4px;left:0;right:0;
+  height:1px;background:var(--gold);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.25s;
+}
+nav a:hover{color:var(--gold);}
+nav a:hover::after{transform:scaleX(1);}
+
+/* HERO */
+#hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 420px;
+  align-items:center;
+  padding:9rem 4rem 5rem;
+  gap:4rem;
+  position:relative;
+  overflow:hidden;
+}
+#hero::before{
+  content:'';
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 50%, rgba(200,150,42,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(24,95,165,0.08) 0%, transparent 50%);
+  pointer-events:none;
+}
+
+/* animated grid lines */
+#hero::after{
+  content:'';
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(200,150,42,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,150,42,0.04) 1px, transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+
+.hero-left{position:relative;z-index:2;}
+
+.hero-label{
+  font-family:var(--mono);font-size:0.68rem;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:0.8rem;
+  opacity:0;animation:fadeUp 0.7s 0.1s ease forwards;
+}
+.hero-label::before{content:'';width:28px;height:1px;background:var(--gold);}
+
+h1{
+  font-family:var(--serif);
+  font-size:clamp(3.2rem,5.5vw,5.5rem);
+  font-weight:900;
+  line-height:1.05;
+  letter-spacing:-0.02em;
+  color:var(--white);
+  margin-bottom:0.3rem;
+  opacity:0;animation:fadeUp 0.7s 0.25s ease forwards;
+}
+h1 em{font-style:italic;color:var(--gold);}
+
+.hero-title{
+  font-family:var(--mono);font-size:0.78rem;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:1.5rem;
+  opacity:0;animation:fadeUp 0.7s 0.38s ease forwards;
+}
+
+.hero-desc{
+  font-size:1rem;color:var(--white2);
+  border-left:2px solid var(--gold);
+  padding-left:1.2rem;margin-bottom:2rem;
+  font-style:italic;line-height:1.7;
+  opacity:0;animation:fadeUp 0.7s 0.5s ease forwards;
+}
+
+.hero-tags{
+  display:flex;flex-wrap:wrap;gap:0.45rem;margin-bottom:2.2rem;
+  opacity:0;animation:fadeUp 0.7s 0.62s ease forwards;
+}
+.tag{
+  font-family:var(--mono);font-size:0.62rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.3rem 0.8rem;
+  border:1px solid var(--gold-border);
+  color:var(--gold);border-radius:2px;
+  background:var(--gold-dim);
+}
+
+.hero-cta{
+  display:flex;gap:1rem;flex-wrap:wrap;
+  opacity:0;animation:fadeUp 0.7s 0.75s ease forwards;
+}
+.btn{
+  font-family:var(--mono);font-size:0.7rem;
+  letter-spacing:0.12em;text-transform:uppercase;
+  padding:0.8rem 2rem;border:none;cursor:pointer;
+  text-decoration:none;display:inline-block;
+  transition:all 0.22s;
+}
+.btn-gold{background:var(--gold);color:var(--navy);}
+.btn-gold:hover{background:var(--gold-light);}
+.btn-outline{border:1px solid var(--gold-border);color:var(--gold);background:transparent;}
+.btn-outline:hover{background:var(--gold-dim);}
+
+/* PHOTO */
+.hero-right{
+  display:flex;align-items:center;justify-content:center;
+  position:relative;z-index:2;
+  opacity:0;animation:fadeUp 0.7s 0.5s ease forwards;
+}
+.photo-wrap{
+  position:relative;
+  width:340px;height:340px;
+}
+.photo-ring-outer{
+  position:absolute;inset:-16px;
+  border-radius:50%;
+  border:1px solid var(--gold-border);
+  animation:spin 20s linear infinite;
+}
+.photo-ring-outer::before{
+  content:'';
+  position:absolute;top:0;left:50%;
+  width:8px;height:8px;
+  border-radius:50%;
+  background:var(--gold);
+  transform:translate(-50%,-50%);
+}
+.photo-ring-inner{
+  position:absolute;inset:-6px;
+  border-radius:50%;
+  border:1px dashed rgba(200,150,42,0.2);
+}
+.photo-circle{
+  width:100%;height:100%;
+  border-radius:50%;
+  background:var(--navy3);
+  border:2px solid var(--gold-border);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:1rem;
+  overflow:hidden;
+  position:relative;
+}
+.photo-circle::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 30%, rgba(200,150,42,0.08), transparent 60%);
+}
+.photo-icon{
+  width:72px;height:72px;
+  border-radius:50%;
+  border:2px dashed var(--gold-border);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;z-index:1;
+}
+.photo-icon svg{width:32px;height:32px;fill:none;stroke:var(--gold);stroke-width:1.5;}
+.photo-text{
+  font-family:var(--mono);font-size:0.65rem;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--gold);opacity:0.7;
+  position:relative;z-index:1;
+}
+.photo-subtext{
+  font-family:var(--mono);font-size:0.58rem;
+  color:var(--muted);letter-spacing:0.08em;
+  position:relative;z-index:1;
+}
+
+/* STATS BAR */
+.stats-bar{
+  background:var(--navy2);
+  border-top:1px solid var(--gold-border);
+  border-bottom:1px solid var(--gold-border);
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+}
+.stat-cell{
+  padding:1.8rem 2rem;
+  text-align:center;
+  border-right:1px solid var(--gold-border);
+  transition:background 0.2s;
+}
+.stat-cell:last-child{border-right:none;}
+.stat-cell:hover{background:var(--navy3);}
+.stat-n{
+  font-family:var(--serif);font-size:2.5rem;
+  font-weight:700;color:var(--gold);
+  line-height:1;display:block;margin-bottom:0.3rem;
+}
+.stat-l{
+  font-family:var(--mono);font-size:0.62rem;
+  letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* SECTIONS */
+section{padding:6rem 4rem;max-width:1200px;margin:0 auto;}
+.full-bleed{max-width:100%;padding:6rem 4rem;background:var(--navy2);}
+.full-bleed > .inner{max-width:1200px;margin:0 auto;}
+
+.sh{display:flex;align-items:baseline;gap:1.2rem;margin-bottom:3.5rem;}
+.sh-num{font-family:var(--mono);font-size:0.62rem;color:var(--gold);letter-spacing:0.18em;}
+h2{font-family:var(--serif);font-size:clamp(2rem,3.5vw,2.8rem);font-weight:700;color:var(--white);}
+h2 em{font-style:italic;color:var(--gold);}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 300px;gap:4rem;align-items:start;}
+.about-text p{font-size:1rem;color:var(--white2);margin-bottom:1.2rem;line-height:1.8;}
+.about-text p:first-child::first-letter{
+  font-family:var(--serif);font-size:3.8rem;line-height:0.8;
+  float:left;margin-right:0.12em;color:var(--gold);font-weight:900;
+}
+
+.about-photo{
+  width:100%;aspect-ratio:3/4;
+  border-radius:4px;
+  background:var(--navy3);
+  border:1px solid var(--gold-border);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:0.8rem;
+  position:relative;
+  overflow:hidden;
+}
+.about-photo::before{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:40%;
+  background:linear-gradient(transparent, rgba(200,150,42,0.05));
+}
+.about-photo-icon{
+  width:56px;height:56px;
+  border:1px dashed var(--gold-border);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
+.about-photo-icon svg{width:24px;height:24px;fill:none;stroke:var(--gold);stroke-width:1.5;opacity:0.6;}
+.about-photo-label{
+  font-family:var(--mono);font-size:0.62rem;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--muted);
+}
+
+.info-block{
+  margin-top:2rem;
+  display:flex;flex-direction:column;gap:0.6rem;
+}
+.info-row{
+  display:flex;gap:1rem;align-items:baseline;
+  padding:0.5rem 0;
+  border-bottom:1px solid var(--faint);
+  font-size:0.88rem;
+}
+.info-key{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);min-width:80px;}
+.info-val{color:var(--white2);}
+
+/* EMPLOYMENT */
+.timeline{display:flex;flex-direction:column;gap:0;}
+.tl-item{
+  display:grid;grid-template-columns:180px 1fr;
+  gap:2rem;
+  padding:2rem 0;
+  border-bottom:1px solid var(--faint);
+  position:relative;
+}
+.tl-item::before{
+  content:'';
+  position:absolute;left:178px;top:0;bottom:0;
+  width:1px;background:var(--gold-border);
+}
+.tl-item::after{
+  content:'';
+  position:absolute;left:174px;top:2.4rem;
+  width:9px;height:9px;
+  border-radius:50%;
+  background:var(--gold);
+  border:2px solid var(--navy);
+}
+.tl-period{
+  font-family:var(--mono);font-size:0.65rem;
+  letter-spacing:0.1em;color:var(--gold);
+  padding-top:0.3rem;text-align:right;
+  padding-right:1.5rem;
+}
+.tl-role{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.2rem;}
+.tl-org{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.06em;color:var(--muted);margin-bottom:0.5rem;}
+.tl-desc{font-size:0.88rem;color:var(--white2);line-height:1.65;}
+
+/* RESEARCH CARDS */
+.rc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.rc{
+  background:var(--navy3);
+  border:1px solid var(--faint);
+  padding:1.8rem;
+  position:relative;overflow:hidden;
+  transition:border-color 0.25s,transform 0.25s;
+}
+.rc::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+  opacity:0;transition:opacity 0.25s;
+}
+.rc:hover{border-color:var(--gold-border);transform:translateY(-3px);}
+.rc:hover::before{opacity:1;}
+.rc-num{
+  font-family:var(--mono);font-size:0.6rem;
+  letter-spacing:0.15em;color:var(--gold);
+  opacity:0.5;margin-bottom:1rem;
+}
+.rc-icon{font-size:1.6rem;margin-bottom:0.8rem;display:block;}
+.rc-title{font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:0.5rem;line-height:1.4;}
+.rc-desc{font-size:0.83rem;color:var(--muted);line-height:1.65;}
+
+/* PUBLICATIONS */
+.pub-list{display:flex;flex-direction:column;}
+.pub{
+  display:grid;grid-template-columns:56px 1fr auto;
+  gap:1.5rem;align-items:start;
+  padding:1.8rem 0;
+  border-bottom:1px solid var(--faint);
+  transition:background 0.2s;
+}
+.pub:hover{background:var(--faint);margin:0 -1rem;padding:1.8rem 1rem;}
+.pub-idx{
+  font-family:var(--serif);font-size:2rem;
+  font-weight:900;color:var(--gold);opacity:0.25;
+  line-height:1;padding-top:0.2rem;
+}
+.pub-title{font-size:0.98rem;font-weight:700;color:var(--white);margin-bottom:0.3rem;line-height:1.5;}
+.pub-authors{font-size:0.83rem;color:var(--muted);font-style:italic;margin-bottom:0.3rem;}
+.pub-journal{font-family:var(--mono);font-size:0.65rem;color:var(--gold);letter-spacing:0.05em;}
+.pub-badge{
+  font-family:var(--mono);font-size:0.58rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.2rem 0.6rem;
+  border:1px solid var(--gold-border);
+  color:var(--gold);
+  white-space:nowrap;align-self:start;
+  margin-top:0.4rem;
+}
+.pub-badge.review{border-color:rgba(138,154,184,0.3);color:var(--muted);}
+.pub-badge.chapter{border-color:rgba(200,150,42,0.5);background:var(--gold-dim);}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2.5rem;}
+.sg h3{
+  font-family:var(--mono);font-size:0.65rem;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1rem;
+  padding-bottom:0.5rem;
+  border-bottom:1px solid var(--gold-border);
+}
+.pills{display:flex;flex-wrap:wrap;gap:0.45rem;}
+.pill{
+  font-family:var(--mono);font-size:0.65rem;
+  letter-spacing:0.06em;padding:0.35rem 0.85rem;
+  background:var(--navy3);
+  border:1px solid var(--faint);
+  color:var(--white2);
+  transition:border-color 0.2s,color 0.2s;
+}
+.pill:hover{border-color:var(--gold-border);color:var(--gold);}
+.pill.gold{background:var(--gold-dim);border-color:var(--gold-border);color:var(--gold);}
+
+/* CONFERENCES */
+.conf-list{display:flex;flex-direction:column;gap:0;}
+.conf{
+  padding:1.5rem 0;
+  border-bottom:1px solid var(--faint);
+  display:grid;grid-template-columns:auto 1fr;gap:1.5rem;
+}
+.conf-year{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.1em;color:var(--gold);padding-top:0.3rem;white-space:nowrap;}
+.conf-title{font-size:0.95rem;font-weight:700;color:var(--white);margin-bottom:0.2rem;}
+.conf-venue{font-size:0.83rem;color:var(--muted);}
+
+/* AWARDS */
+.awards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.award{
+  background:var(--navy3);
+  border:1px solid var(--gold-border);
+  padding:1.8rem;
+  position:relative;
+}
+.award::after{
+  content:'★';
+  position:absolute;top:1.2rem;right:1.2rem;
+  color:var(--gold);opacity:0.3;font-size:1rem;
+}
+.award-year{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.12em;color:var(--gold);margin-bottom:0.5rem;}
+.award-title{font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:0.3rem;line-height:1.4;}
+.award-detail{font-size:0.82rem;color:var(--muted);}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.contact-links{display:flex;flex-direction:column;gap:0.8rem;margin-top:1.5rem;}
+.cl{
+  display:flex;align-items:center;gap:1rem;
+  text-decoration:none;
+  padding:0.9rem 1.2rem;
+  border:1px solid var(--faint);
+  color:var(--white2);
+  transition:all 0.2s;
+  font-size:0.88rem;
+}
+.cl:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-dim);}
+.cl-icon{
+  width:32px;height:32px;
+  border-radius:50%;
+  background:var(--gold-dim);
+  border:1px solid var(--gold-border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.8rem;flex-shrink:0;
+  font-family:var(--mono);color:var(--gold);
+}
+.contact-quote{
+  font-family:var(--serif);
+  font-size:clamp(1.6rem,2.5vw,2.4rem);
+  font-style:italic;font-weight:400;
+  color:var(--muted);
+  line-height:1.4;
+  border-left:3px solid var(--gold);
+  padding-left:1.5rem;
+}
+.contact-quote em{color:var(--white);font-style:normal;}
+
+/* REFS */
+.refs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.ref{
+  background:var(--navy3);
+  border:1px solid var(--faint);
+  padding:1.5rem;
+  transition:border-color 0.2s;
+}
+.ref:hover{border-color:var(--gold-border);}
+.ref-name{font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:0.2rem;}
+.ref-role{font-size:0.8rem;color:var(--muted);margin-bottom:0.8rem;}
+.ref-contact{font-family:var(--mono);font-size:0.68rem;color:var(--gold);line-height:1.9;}
+
+/* FOOTER */
+footer{
+  padding:2rem 4rem;
+  border-top:1px solid var(--gold-border);
+  display:flex;align-items:center;justify-content:space-between;
+  font-family:var(--mono);font-size:0.62rem;
+  letter-spacing:0.1em;color:var(--muted);text-transform:uppercase;
+  background:var(--navy2);
+}
+.footer-dot{color:var(--gold);margin:0 0.5rem;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  #hero{grid-template-columns:1fr;padding:7rem 2rem 3rem;gap:3rem;}
+  .hero-right{order:-1;}
+  .photo-wrap{width:220px;height:220px;}
+  nav{padding:1rem 1.5rem;}
+  nav ul{gap:1.2rem;}
+  section,.full-bleed{padding:4rem 1.5rem;}
+  .about-grid{grid-template-columns:1fr;}
+  .rc-grid{grid-template-columns:1fr;}
+  .skills-grid{grid-template-columns:1fr;}
+  .awards-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .refs-grid{grid-template-columns:1fr;}
+  .stats-bar{grid-template-columns:repeat(2,1fr);}
+  .tl-item{grid-template-columns:120px 1fr;}
+  .tl-item::before{left:118px;}
+  .tl-item::after{left:114px;}
+  footer{flex-direction:column;gap:0.5rem;text-align:center;}
+  .pub{grid-template-columns:40px 1fr;}
+  .pub-badge{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">M. S. H. Ansari</span>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero" style="max-width:100%;padding-top:9rem;padding-bottom:5rem;">
+  <div class="hero-left">
+    <div class="hero-label">Mathematician · Control Theorist · IIT Mandi</div>
+    <h1>Md Samshad<br/><em>Hussain Ansari</em></h1>
+    <div class="hero-title">Assistant Professor · Newton School of Technology, Pune &nbsp;|&nbsp; PhD, IIT Mandi (9.67 CGPA)</div>
+    <p class="hero-desc">
+      Pushing the frontiers of fractional-order dynamical systems, quaternion-valued neural networks, and mathematical control theory — with rigour, elegance, and purpose.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">Fractional Calculus</span>
+      <span class="tag">Neural Networks</span>
+      <span class="tag">Control Theory</span>
+      <span class="tag">Synchronisation</span>
+      <span class="tag">Switched Systems</span>
+      <span class="tag">Quaternion Systems</span>
+      <span class="tag">Dynamical Systems</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#publications" class="btn btn-gold">View Publications</a>
+      <a href="#contact" class="btn btn-outline">Contact Me</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="photo-wrap">
+      <div class="photo-ring-outer"></div>
+      <div class="photo-ring-inner"></div>
+      <div class="photo-circle">
+        <div class="photo-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <span class="photo-text">Upload Photo</span>
+        <span class="photo-subtext">Click to add your image</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-cell">
+    <span class="stat-n">7</span>
+    <span class="stat-l">Journal Articles</span>
+  </div>
+  <div class="stat-cell">
+    <span class="stat-n">9.67</span>
+    <span class="stat-l">PhD CGPA</span>
+  </div>
+  <div class="stat-cell">
+    <span class="stat-n">3</span>
+    <span class="stat-l">Conferences</span>
+  </div>
+  <div class="stat-cell">
+    <span class="stat-n">82</span>
+    <span class="stat-l">CSIR-NET JRF Rank</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sh"><span class="sh-num">01 /</span><h2>About <em>Me</em></h2></div>
+  <div class="about-grid">
+    <div>
+      <div class="about-text">
+        <p>
+          I am a mathematician and researcher specialising in fractional-order dynamical systems, quaternion-valued neural networks, and mathematical control theory. I completed my PhD at IIT Mandi (CGPA: 9.67) under the supervision of Prof. Muslim Malik, with a thesis on the synchronisation of fractional-order quaternion-valued neural networks.
+        </p>
+        <p>
+          My research develops rigorous theoretical frameworks for the analysis and control of complex dynamical systems — from finite-time synchronisation using sliding mode control to the controllability of multi-term fractional impulsive systems with φ-Caputo and Prabhakar derivatives. My work has been published in leading journals including Fractional Calculus and Applied Analysis, Physica Scripta, Chinese Journal of Physics, and The European Physical Journal Plus.
+        </p>
+        <p>
+          Currently, I serve as an Assistant Professor at Newton School of Technology, Ajinkya DY Patil University, Pune. I bring extensive teaching experience spanning Linear Algebra, Engineering Mathematics, Data Science, and Complex Analysis from my time at IIT Mandi, as well as prior academic support work on platforms such as Chegg and Course Hero.
+        </p>
+      </div>
+      <div class="info-block">
+        <div class="info-row"><span class="info-key">Email</span><span class="info-val">mdsambussain1996@gmail.com</span></div>
+        <div class="info-row"><span class="info-key">Phone</span><span class="info-val">+91 8795460441</span></div>
+        <div class="info-row"><span class="info-key">Location</span><span class="info-val">Lohegaon, Pune, Maharashtra</span></div>
+        <div class="info-row"><span class="info-key">Profiles</span><span class="info-val" style="color:var(--gold);">Google Scholar · ResearchGate · ORCID</span></div>
+        <div class="info-row"><span class="info-key">Reviewer</span><span class="info-val">Fuzzy Sets & Systems · Neural Networks · IEEE Trans. Cybernetics</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="about-photo">
+        <div class="about-photo-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <span class="about-photo-label">Photo Placeholder</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMPLOYMENT -->
+<div class="full-bleed">
+  <div class="inner">
+    <div class="sh"><span class="sh-num">02 /</span><h2>Academic <em>Employment</em></h2></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-period">2025 – Present</div>
+        <div>
+          <div class="tl-role">Assistant Professor</div>
+          <div class="tl-org">Newton School of Technology, Ajinkya DY Patil University · Pune, India</div>
+          <div class="tl-desc">Teaching Discrete Mathematics, Probability & Statistics, Linear Algebra, Calculus and Optimisation at undergraduate level.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">2023 – 2025</div>
+        <div>
+          <div class="tl-role">Senior Research Fellow</div>
+          <div class="tl-org">Indian Institute of Technology (IIT) Mandi · India</div>
+          <div class="tl-desc">Conducted doctoral research on fractional-order neural networks and controllability. Teaching assistant for Linear Algebra, Engineering Mathematics, ODEs, and Data Science courses.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">2021 – 2023</div>
+        <div>
+          <div class="tl-role">Junior Research Fellow</div>
+          <div class="tl-org">Indian Institute of Technology (IIT) Mandi · India</div>
+          <div class="tl-desc">Initiated PhD research under Prof. Muslim Malik. Developed foundational results on Prabhakar fractional controllability and quaternion-valued synchronisation.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">2017 – 2021</div>
+        <div>
+          <div class="tl-role">Subject Matter Expert — Mathematics</div>
+          <div class="tl-org">Chegg Inc. (India) & Course Hero</div>
+          <div class="tl-desc">Provided expert academic support in undergraduate and postgraduate mathematics across global learning platforms. Solved and explained problems in Calculus, Linear Algebra, Differential Equations, Probability, and Engineering Mathematics.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="sh"><span class="sh-num">03 /</span><h2>Research <em>Themes</em></h2></div>
+  <div class="rc-grid">
+    <div class="rc">
+      <div class="rc-num">R · 01</div>
+      <span class="rc-icon">∂</span>
+      <div class="rc-title">Fractional-Order Dynamics</div>
+      <p class="rc-desc">Prabhakar, φ-Caputo, and Mittag-Leffler kernel frameworks for modelling systems with memory. Controllability and stability of multi-term impulsive fractional systems.</p>
+    </div>
+    <div class="rc">
+      <div class="rc-num">R · 02</div>
+      <span class="rc-icon">ℍ</span>
+      <div class="rc-title">Quaternion-Valued Neural Networks</div>
+      <p class="rc-desc">Finite-time, projective, quasi-projective, and adaptive synchronisation of fractional quaternion-valued neural networks using sliding mode control and Lyapunov methods.</p>
+    </div>
+    <div class="rc">
+      <div class="rc-num">R · 03</div>
+      <span class="rc-icon">⟳</span>
+      <div class="rc-title">Synchronisation Theory</div>
+      <p class="rc-desc">Synchronisation of nonidentical, uncertain, and inertial neural networks across fractional orders in the quaternion field — with and without sliding mode control.</p>
+    </div>
+    <div class="rc">
+      <div class="rc-num">R · 04</div>
+      <span class="rc-icon">⊛</span>
+      <div class="rc-title">Mathematical Control Theory</div>
+      <p class="rc-desc">Controllability analysis of Prabhakar and Langevin dynamical systems with non-instantaneous impulses. Extensions to multi-agent and switched system architectures.</p>
+    </div>
+    <div class="rc">
+      <div class="rc-num">R · 05</div>
+      <span class="rc-icon">⌁</span>
+      <div class="rc-title">Nonlinear Dynamical Systems</div>
+      <p class="rc-desc">Stability and qualitative analysis of nonlinear ordinary and functional differential equations, including delay and differential-algebraic systems.</p>
+    </div>
+    <div class="rc">
+      <div class="rc-num">R · 06</div>
+      <span class="rc-icon">𝛹</span>
+      <div class="rc-title">Neural Network Modeling</div>
+      <p class="rc-desc">Competitive, inertial, and recurrent neural network architectures with fractional-order dynamics, uncertainty, and inconsistent orders in the quaternion field.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<div class="full-bleed">
+  <div class="inner" id="publications">
+    <div class="sh"><span class="sh-num">04 /</span><h2>Research <em>Publications</em></h2></div>
+    <div class="pub-list">
+
+      <div class="pub">
+        <div class="pub-idx">1</div>
+        <div>
+          <div class="pub-title">Controllability of Prabhakar Fractional Dynamical Systems</div>
+          <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik, Dumitru Baleanu</div>
+          <div class="pub-journal">Qualitative Theory of Dynamical Systems 23(2) · 2024 · DOI: 10.1007/s12346-023-00919-4</div>
+        </div>
+        <span class="pub-badge">2024</span>
+      </div>
+
+      <div class="pub">
+        <div class="pub-idx">2</div>
+        <div>
+          <div class="pub-title">Projective Synchronization of Fractional Order Quaternion Valued Uncertain Competitive Neural Networks</div>
+          <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik</div>
+          <div class="pub-journal">Chinese Journal of Physics 88 · 2024 · DOI: 10.1016/j.cjph.2024.02.032</div>
+        </div>
+        <span class="pub-badge">2024</span>
+      </div>
+
+      <div class="pub">
+        <div class="pub-idx">3</div>
+        <div>
+          <div class="pub-title">Finite-Time Synchronization of Fractional Order Uncertain Quaternion-Valued Neural Networks via Sliding Mode Control</div>
+          <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik</div>
+          <div class="pub-journal">International Journal of Computer Mathematics 101(7) · 2024 · DOI: 10.1080/00207160.2024.2383198</div>
+        </div>
+        <span class="pub-badge">2024</span>
+      </div>
+
+      <div class="pub">
+        <div class="pub-idx">4</div>
+        <div>
+          <div class="pub-title">Quasi-Projective Synchronization of Nonidentical Fractional-Order Neural Networks with Inconsistent Orders in Quaternion Field</div>
+          <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik</div>
+          <div class="pub-journal">Physica Scripta 100(1) · 2024 · DOI: 10.1088/1402-4896/ad9c26</div>
+        </div>
+        <span class="pub-badge">2024</span>
+      </div>
+
+      <div class="pub">
+        <div class="pub-idx">5</div>
+        <div>
+          <div class="pub-title">Projective Synchronization of Fractional-Order Quaternion-Valued Neural Networks with Mittag-Leffler Kernel</div>
+          <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik, Juan J. Nieto</div>
+          <div class="pub-journal">International Journal of General Systems · 2025 · DOI: 10.1080/03081079.2025.2457550</div>
+        </div>
+        <span class="pub-badge">2025</span>
+      </div>
+
+      <div class="pub">
+        <div class="pub-idx">6</div>
+        <div>
+          <div class="pub-title">Controllability of Multi-Term Fractional Order Impulsive Dynamical Systems with φ-Caputo Fractional Derivative</div>
+          <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik</div>
+          <div class="pub-journal">Fractional Calculus and Applied Analysis 28 · 2025 · DOI: 10.1007/s13540-025-00393-6</div>
+        </div>
+        <span class="pub-badge">2025</span>
+      </div>
+
+      <div class="pub">
+        <div class="pub-idx">7</div>
+        <div>
+          <div class="pub-title">Mittag-Leffler and Asymptotic Adaptive Projective Synchronization of Fractional Inertial Neural Networks in Quaternion Field</div>
+          <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik, Juan J. Nieto</div>
+          <div class="pub-journal">The European Physical Journal Plus 140(9) · 2025 · DOI: 10.1140/epjp/s13360-025-06840-w</div>
+        </div>
+        <span class="pub-badge">2025</span>
+      </div>
+
+      <div class="pub">
+        <div class="pub-idx">★</div>
+        <div>
+          <div class="pub-title">Terminal Value Problem of Prabhakar Fractional Differential Equation</div>
+          <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik</div>
+          <div class="pub-journal">Continuous and Discrete Dynamics: Theory and Applications · Springer (Accepted)</div>
+        </div>
+        <span class="pub-badge chapter">Book Chapter</span>
+      </div>
+
+      <div class="pub">
+        <div class="pub-idx">→</div>
+        <div>
+          <div class="pub-title">Synchronization of Nonidentical Quaternion-Valued Inertial Neural Networks with Different Fractional-Orders via Sliding Mode Control</div>
+          <div class="pub-authors">Md Samshad Hussain Ansari</div>
+          <div class="pub-journal">Under Review</div>
+        </div>
+        <span class="pub-badge review">Under Review</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CONFERENCES -->
+<section>
+  <div class="sh"><span class="sh-num">05 /</span><h2>Conferences &amp; <em>Presentations</em></h2></div>
+  <div class="conf-list">
+    <div class="conf">
+      <div class="conf-year">Dec 2024</div>
+      <div>
+        <div class="conf-title">Controllability of ψ-Caputo Fractional Langevin Dynamical Systems with Impulsive Effects</div>
+        <div class="conf-venue">The 14th AIMS Conference · NYU Abu Dhabi, UAE · Dec 16–20, 2024 <span style="color:var(--gold);font-size:0.78rem;font-family:var(--mono);">[Travel Grant Awarded]</span></div>
+      </div>
+    </div>
+    <div class="conf">
+      <div class="conf-year">Jul 2024</div>
+      <div>
+        <div class="conf-title">Controllability of Generalised Fractional Dynamical Systems with Non-Instantaneous Impulses</div>
+        <div class="conf-venue">2nd International Conference on Recent Advances in Applied Mathematics · IIT (BHU), India · Jul 03–05, 2024</div>
+      </div>
+    </div>
+    <div class="conf">
+      <div class="conf-year">Jan 2024</div>
+      <div>
+        <div class="conf-title">Terminal Value Problem of Prabhakar Fractional Differential Equation</div>
+        <div class="conf-venue">5th International Conference on Mathematical Techniques and Applications (ICMTA-2024) · SRM Institute, India · Jan 02–04, 2024</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<div class="full-bleed" id="awards">
+  <div class="inner">
+    <div class="sh"><span class="sh-num">06 /</span><h2>Honours &amp; <em>Awards</em></h2></div>
+    <div class="awards-grid">
+      <div class="award">
+        <div class="award-year">2019</div>
+        <div class="award-title">CSIR-UGC NET — JRF (Mathematical Sciences)</div>
+        <div class="award-detail">All-India Rank 82 in JRF. Qualified for Junior Research Fellowship and Lectureship eligibility.</div>
+      </div>
+      <div class="award">
+        <div class="award-year">2020</div>
+        <div class="award-title">GATE — Mathematics</div>
+        <div class="award-detail">All-India Rank 641. Graduate Aptitude Test in Engineering — national-level examination.</div>
+      </div>
+      <div class="award">
+        <div class="award-year">2024</div>
+        <div class="award-title">International Travel Grant — IIT Mandi</div>
+        <div class="award-detail">Awarded ₹1,00,000 initial financial support to attend the 14th AIMS Conference at NYU Abu Dhabi, UAE.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section>
+  <div class="sh"><span class="sh-num">07 /</span><h2>Skills &amp; <em>Expertise</em></h2></div>
+  <div class="skills-grid">
+    <div class="sg">
+      <h3>Mathematical Expertise</h3>
+      <div class="pills">
+        <span class="pill gold">Fractional Calculus</span>
+        <span class="pill gold">Sliding Mode Control</span>
+        <span class="pill gold">Lyapunov Stability</span>
+        <span class="pill gold">Synchronisation Theory</span>
+        <span class="pill gold">Quaternion Algebra</span>
+        <span class="pill gold">Controllability Analysis</span>
+        <span class="pill gold">Functional Analysis</span>
+      </div>
+    </div>
+    <div class="sg">
+      <h3>Research Domains</h3>
+      <div class="pills">
+        <span class="pill">Neural Networks</span>
+        <span class="pill">Dynamical Systems</span>
+        <span class="pill">Control Theory</span>
+        <span class="pill">Nonlinear Systems</span>
+        <span class="pill">Impulsive Systems</span>
+        <span class="pill">Fractional DEs</span>
+      </div>
+    </div>
+    <div class="sg">
+      <h3>Programming & Tools</h3>
+      <div class="pills">
+        <span class="pill">LaTeX</span>
+        <span class="pill">MATLAB</span>
+        <span class="pill">Python</span>
+        <span class="pill">Data Analytics</span>
+        <span class="pill">Deep Learning</span>
+      </div>
+    </div>
+    <div class="sg">
+      <h3>Teaching Experience</h3>
+      <div class="pills">
+        <span class="pill">Linear Algebra</span>
+        <span class="pill">Engineering Mathematics</span>
+        <span class="pill">Complex Analysis</span>
+        <span class="pill">Probability & Statistics</span>
+        <span class="pill">Discrete Mathematics</span>
+        <span class="pill">ODEs & Integral Transforms</span>
+        <span class="pill">Data Science (DS301)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="full-bleed" id="contact">
+  <div class="inner">
+    <div class="sh"><span class="sh-num">08 /</span><h2>Get in <em>Touch</em></h2></div>
+    <div class="contact-grid">
+      <div>
+        <p style="color:var(--white2);font-style:italic;margin-bottom:1.5rem;">Open to research collaborations, postdoctoral discussions, and academic conversations in fractional-order systems, control theory, and neural network dynamics.</p>
+        <div class="contact-links">
+          <a class="cl" href="mailto:mdsambussain1996@gmail.com">
+            <span class="cl-icon">✉</span>mdsambussain1996@gmail.com
+          </a>
+          <a class="cl" href="tel:+918795460441">
+            <span class="cl-icon">☏</span>+91 8795460441
+          </a>
+          <a class="cl" href="#">
+            <span class="cl-icon">G</span>Google Scholar Profile
+          </a>
+          <a class="cl" href="#">
+            <span class="cl-icon">R</span>ResearchGate Profile
+          </a>
+          <a class="cl" href="#">
+            <span class="cl-icon">iD</span>ORCID Profile
+          </a>
+        </div>
+      </div>
+      <div class="contact-quote">
+        "Mathematics is not about <em>numbers</em> — it is about understanding the deep <em>structure</em> of reality."
+      </div>
+    </div>
+
+    <!-- REFERENCES -->
+    <div style="margin-top:4rem;">
+      <h3 style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;">Academic References</h3>
+      <div class="refs-grid">
+        <div class="ref">
+          <div class="ref-name">Prof. Muslim Malik</div>
+          <div class="ref-role">PhD Supervisor · Professor, IIT Mandi</div>
+          <div class="ref-contact">muslim@iitmandi.ac.in<br/>+91-7018582332</div>
+        </div>
+        <div class="ref">
+          <div class="ref-name">Dr. Asif Khan</div>
+          <div class="ref-role">Associate Professor · Aligarh Muslim University</div>
+          <div class="ref-contact">akhan.mm@amu.ac.in</div>
+        </div>
+        <div class="ref">
+          <div class="ref-name">Dr. Vikash Tripathi</div>
+          <div class="ref-role">Assistant Professor · IIT Mandi</div>
+          <div class="ref-contact">vikash@iitmandi.ac.in<br/>+91-9999297494</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Md Samshad Hussain Ansari</span>
+  <span>Newton School of Technology<span class="footer-dot">·</span>Pune, India</span>
+  <span>Fractional Calculus<span class="footer-dot">·</span>Neural Networks<span class="footer-dot">·</span>Control Theory</span>
+</footer>
+
+</body>
+</html>
