@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Teaching - Dr. Md Samshad Hussain Ansari</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/components.js" defer></script>
+  <style>
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+    .skill-group h3 {
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.5rem;
+    }
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .pill {
+      background: #f1f5f9;
+      color: var(--text-main);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border: 1px solid #e2e8f0;
+    }
+    .pill-accent {
+      background: var(--accent-light);
+      color: var(--accent);
+      border-color: #bee3f8;
+    }
+    .teaching-experience {
+      margin-top: 4rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-container">
+    <portfolio-navbar></portfolio-navbar>
+  </div>
+
+  <main>
+    <h1 class="page-title">Teaching & Expertise</h1>
+    
+    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-main);">
+      I bring extensive teaching experience spanning Linear Algebra, Engineering Mathematics, Data Science, and Complex Analysis from my time at IIT Mandi and currently as an Assistant Professor at Newton School of Technology. I am passionate about explaining complex mathematical structures with clarity and purpose.
+    </p>
+
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Mathematical Expertise</h3>
+        <div class="pills">
+          <span class="pill pill-accent">Fractional Calculus</span>
+          <span class="pill pill-accent">Sliding Mode Control</span>
+          <span class="pill pill-accent">Lyapunov Stability</span>
+          <span class="pill pill-accent">Synchronisation Theory</span>
+          <span class="pill pill-accent">Quaternion Algebra</span>
+          <span class="pill pill-accent">Controllability Analysis</span>
+          <span class="pill pill-accent">Functional Analysis</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Courses Taught</h3>
+        <div class="pills">
+          <span class="pill">Linear Algebra</span>
+          <span class="pill">Engineering Mathematics</span>
+          <span class="pill">Complex Analysis</span>
+          <span class="pill">Probability & Statistics</span>
+          <span class="pill">Discrete Mathematics</span>
+          <span class="pill">ODEs & Integral Transforms</span>
+          <span class="pill">Data Science (DS301)</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Research Domains</h3>
+        <div class="pills">
+          <span class="pill">Neural Networks</span>
+          <span class="pill">Dynamical Systems</span>
+          <span class="pill">Control Theory</span>
+          <span class="pill">Nonlinear Systems</span>
+          <span class="pill">Impulsive Systems</span>
+          <span class="pill">Fractional DEs</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3>Programming & Tools</h3>
+        <div class="pills">
+          <span class="pill">LaTeX</span>
+          <span class="pill">MATLAB</span>
+          <span class="pill">Python</span>
+          <span class="pill">Data Analytics</span>
+          <span class="pill">Deep Learning</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="teaching-experience">
+      <h2 class="section-title">Teaching Experience Overview</h2>
+      <div class="timeline" style="margin-top: 2rem;">
+        <div class="timeline-item">
+          <div class="timeline-date">2025 – Present</div>
+          <h3>Assistant Professor</h3>
+          <p style="font-weight:700; color:var(--text-muted); margin-bottom:0.5rem; font-size:0.9rem;">Newton School of Technology, Pune</p>
+          <p>Delivering comprehensive undergraduate courses in Discrete Mathematics, Probability & Statistics, Linear Algebra, Calculus, and Optimisation.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2023 – 2025</div>
+          <h3>Teaching Assistant</h3>
+          <p style="font-weight:700; color:var(--text-muted); margin-bottom:0.5rem; font-size:0.9rem;">IIT Mandi</p>
+          <p>Supported academic instruction for Linear Algebra, Engineering Mathematics, Ordinary Differential Equations, and Data Science.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2017 – 2021</div>
+          <h3>Subject Matter Expert</h3>
+          <p style="font-weight:700; color:var(--text-muted); margin-bottom:0.5rem; font-size:0.9rem;">Chegg Inc. & Course Hero</p>
+          <p>Provided detailed academic support in undergraduate and postgraduate mathematics, solving complex problems in Calculus, Differential Equations, and Probability for a global audience.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <portfolio-footer></portfolio-footer>
+</body>
+</html>

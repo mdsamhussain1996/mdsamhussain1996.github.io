@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Research - Dr. Md Samshad Hussain Ansari</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/components.js" defer></script>
+  <style>
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .research-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-color);
+      padding: 2rem;
+      border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .research-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .research-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    .research-card:hover::before {
+      opacity: 1;
+    }
+    .research-icon {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      font-family: var(--font-serif);
+      font-style: italic;
+    }
+    .research-title {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: #1a202c;
+    }
+    .research-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-container">
+    <portfolio-navbar></portfolio-navbar>
+  </div>
+
+  <main>
+    <h1 class="page-title">Research Themes</h1>
+    <p style="margin-bottom: 3rem; font-size: 1.1rem; color: var(--text-main); line-height: 1.8;">
+      My research develops rigorous theoretical frameworks for the analysis and control of complex dynamical systems. I focus on pushing the frontiers of fractional-order dynamical systems, quaternion-valued neural networks, and mathematical control theory.
+    </p>
+
+    <div class="research-grid">
+      <div class="research-card">
+        <div class="research-icon">∂</div>
+        <h3 class="research-title">Fractional-Order Dynamics</h3>
+        <p class="research-desc">Prabhakar, φ-Caputo, and Mittag-Leffler kernel frameworks for modelling systems with memory. Controllability and stability of multi-term impulsive fractional systems.</p>
+      </div>
+
+      <div class="research-card">
+        <div class="research-icon">ℍ</div>
+        <h3 class="research-title">Quaternion-Valued Neural Networks</h3>
+        <p class="research-desc">Finite-time, projective, quasi-projective, and adaptive synchronisation of fractional quaternion-valued neural networks using sliding mode control and Lyapunov methods.</p>
+      </div>
+
+      <div class="research-card">
+        <div class="research-icon">⟳</div>
+        <h3 class="research-title">Synchronisation Theory</h3>
+        <p class="research-desc">Synchronisation of nonidentical, uncertain, and inertial neural networks across fractional orders in the quaternion field — with and without sliding mode control.</p>
+      </div>
+
+      <div class="research-card">
+        <div class="research-icon">⊛</div>
+        <h3 class="research-title">Mathematical Control Theory</h3>
+        <p class="research-desc">Controllability analysis of Prabhakar and Langevin dynamical systems with non-instantaneous impulses. Extensions to multi-agent and switched system architectures.</p>
+      </div>
+
+      <div class="research-card">
+        <div class="research-icon">⌁</div>
+        <h3 class="research-title">Nonlinear Dynamical Systems</h3>
+        <p class="research-desc">Stability and qualitative analysis of nonlinear ordinary and functional differential equations, including delay and differential-algebraic systems.</p>
+      </div>
+
+      <div class="research-card">
+        <div class="research-icon">𝛹</div>
+        <h3 class="research-title">Neural Network Modeling</h3>
+        <p class="research-desc">Competitive, inertial, and recurrent neural network architectures with fractional-order dynamics, uncertainty, and inconsistent orders in the quaternion field.</p>
+      </div>
+    </div>
+
+    <h1 class="page-title" style="margin-top: 5rem;">Research Publications</h1>
+
+    <div class="card pub-item">
+      <span class="badge badge-year">2025</span>
+      <div class="pub-title">Mittag-Leffler and Asymptotic Adaptive Projective Synchronization of Fractional Inertial Neural Networks in Quaternion Field</div>
+      <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik, Juan J. Nieto</div>
+      <div class="pub-journal">The European Physical Journal Plus 140(9) · DOI: 10.1140/epjp/s13360-025-06840-w</div>
+    </div>
+
+    <div class="card pub-item">
+      <span class="badge badge-year">2025</span>
+      <div class="pub-title">Controllability of Multi-Term Fractional Order Impulsive Dynamical Systems with φ-Caputo Fractional Derivative</div>
+      <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik</div>
+      <div class="pub-journal">Fractional Calculus and Applied Analysis 28 · DOI: 10.1007/s13540-025-00393-6</div>
+    </div>
+
+    <div class="card pub-item">
+      <span class="badge badge-year">2025</span>
+      <div class="pub-title">Projective Synchronization of Fractional-Order Quaternion-Valued Neural Networks with Mittag-Leffler Kernel</div>
+      <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik, Juan J. Nieto</div>
+      <div class="pub-journal">International Journal of General Systems · DOI: 10.1080/03081079.2025.2457550</div>
+    </div>
+
+    <div class="card pub-item">
+      <span class="badge badge-year">2024</span>
+      <div class="pub-title">Quasi-Projective Synchronization of Nonidentical Fractional-Order Neural Networks with Inconsistent Orders in Quaternion Field</div>
+      <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik</div>
+      <div class="pub-journal">Physica Scripta 100(1) · DOI: 10.1088/1402-4896/ad9c26</div>
+    </div>
+
+    <div class="card pub-item">
+      <span class="badge badge-year">2024</span>
+      <div class="pub-title">Finite-Time Synchronization of Fractional Order Uncertain Quaternion-Valued Neural Networks via Sliding Mode Control</div>
+      <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik</div>
+      <div class="pub-journal">International Journal of Computer Mathematics 101(7) · DOI: 10.1080/00207160.2024.2383198</div>
+    </div>
+
+    <div class="card pub-item">
+      <span class="badge badge-year">2024</span>
+      <div class="pub-title">Projective Synchronization of Fractional Order Quaternion Valued Uncertain Competitive Neural Networks</div>
+      <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik</div>
+      <div class="pub-journal">Chinese Journal of Physics 88 · DOI: 10.1016/j.cjph.2024.02.032</div>
+    </div>
+
+    <div class="card pub-item">
+      <span class="badge badge-year">2024</span>
+      <div class="pub-title">Controllability of Prabhakar Fractional Dynamical Systems</div>
+      <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik, Dumitru Baleanu</div>
+      <div class="pub-journal">Qualitative Theory of Dynamical Systems 23(2) · DOI: 10.1007/s12346-023-00919-4</div>
+    </div>
+
+    <h2 style="margin-top: 3rem; margin-bottom: 1.5rem; color: var(--accent);">Book Chapters & Preprints</h2>
+
+    <div class="card pub-item">
+      <span class="badge badge-chapter">Book Chapter</span>
+      <div class="pub-title">Terminal Value Problem of Prabhakar Fractional Differential Equation</div>
+      <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik</div>
+      <div class="pub-journal">Continuous and Discrete Dynamics: Theory and Applications · Springer (Accepted)</div>
+    </div>
+
+    <div class="card pub-item">
+      <span class="badge badge-review">Under Review</span>
+      <div class="pub-title">Synchronization of Nonidentical Quaternion-Valued Inertial Neural Networks with Different Fractional-Orders via Sliding Mode Control</div>
+      <div class="pub-authors">Md Samshad Hussain Ansari</div>
+      <div class="pub-journal">Under Review</div>
+    </div>
+
+  </main>
+
+  <portfolio-footer></portfolio-footer>
+</body>
+</html>
