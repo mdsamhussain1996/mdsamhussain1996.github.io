@@ -4,16 +4,62 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Projects - Dr. Md Samshad Hussain Ansari</title>
+  <meta name="description" content="Academic projects and simulations by Dr. Md Samshad Hussain Ansari in stochastic synchronization, multi-agent consensus, fractional-order systems, and quaternion neural networks." />
   <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
   <script src="js/components.js" defer></script>
   <style>
-    .placeholder-message {
-      text-align: center;
-      padding: 6rem 2rem;
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+    .project-card {
       background: var(--bg-alt);
-      border: 1px dashed var(--border-color);
-      border-radius: 8px;
-      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+    .project-canvas-area {
+      width: 100%; height: 220px;
+      background: #f7faff;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .project-canvas-area canvas { width: 100%; height: 100%; display: block; }
+    .project-body { padding: 1.75rem; flex: 1; display: flex; flex-direction: column; }
+    .project-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .tag {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.07em; padding: 0.2rem 0.6rem; border-radius: 4px;
+      background: var(--accent-light); color: var(--accent); border: 1px solid #bee3f8;
+    }
+    .tag.matlab { background: #fff5f5; color: #c53030; border-color: #fed7d7; }
+    .tag.python { background: #f0fff4; color: #276749; border-color: #c6f6d5; }
+    .tag.scipy  { background: #faf5ff; color: #6b46c1; border-color: #e9d8fd; }
+    .project-title { font-size: 1.15rem; color: #1a202c; margin-bottom: 0.6rem; line-height: 1.35; }
+    .project-desc  { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; flex: 1; }
+    .project-footer {
+      display: flex; gap: 0.75rem; flex-wrap: wrap;
+      margin-top: 1.25rem; padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+    .project-footer a { font-size: 0.82rem; font-weight: 700; }
+    .key-result {
+      margin-top: 0.75rem; padding: 0.65rem 0.9rem;
+      background: #ebf8ff; border-left: 3px solid #2c5282;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.82rem; color: #2b6cb0; line-height: 1.55;
+    }
+
+    @media(max-width:520px) {
+      .projects-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -23,15 +69,291 @@
   </div>
 
   <main>
-    <h1 class="page-title">Projects</h1>
-    <div class="placeholder-message">
-      <h2>Project Portfolio Update in Progress</h2>
-      <p style="margin-top: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.8;">
-        This section is currently being updated with recent academic projects, MATLAB simulations, and Python implementations related to fractional-order dynamical systems and quaternion-valued neural networks.
-      </p>
+    <h1 class="page-title">Projects &amp; Simulations</h1>
+    <p style="font-size:1.05rem; color:var(--text-main); line-height:1.8; max-width:780px;">
+      A selection of academic research projects, MATLAB/Python simulations, and interactive demos developed alongside my published work in dynamical systems, synchronization theory, and multi-agent networks.
+    </p>
+
+    <div class="projects-grid">
+
+      <!-- Project 1: Multi-Agent Consensus -->
+      <div class="project-card">
+        <div class="project-canvas-area">
+          <canvas id="proj-canvas-1"></canvas>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">Multi-Agent Systems</span>
+            <span class="tag python">Python</span>
+            <span class="tag scipy">NetworkX</span>
+            <span class="tag">Current Research</span>
+          </div>
+          <h3 class="project-title">Distributed Consensus Protocol Simulator</h3>
+          <p class="project-desc">
+            Simulation of average-consensus and leader-follower protocols over switching graph topologies (ring, complete, star, random). Demonstrates convergence under communication delays and stochastic perturbations. The protocol implements $\dot{x}_i = -\sum_{j \in \mathcal{N}_i}(x_i - x_j)$ with discrete-time updates.
+          </p>
+          <div class="key-result">
+            📊 <strong>Key Result:</strong> Convergence time scales with the algebraic connectivity $\lambda_2(\mathcal{L})$ of the graph Laplacian — sparser graphs converge slower.
+          </div>
+          <div class="project-footer">
+            <a href="research.html" class="btn btn-outline">Related Publication</a>
+            <a href="research.html#viz" class="btn">Live Demo ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: Stochastic Sync -->
+      <div class="project-card">
+        <div class="project-canvas-area">
+          <canvas id="proj-canvas-2"></canvas>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">Stochastic Systems</span>
+            <span class="tag python">Python</span>
+            <span class="tag scipy">SciPy</span>
+            <span class="tag">Current Research</span>
+          </div>
+          <h3 class="project-title">Stochastic Synchronization under Brownian Noise</h3>
+          <p class="project-desc">
+            Numerical simulation of two coupled stochastic differential systems: $dx_i = f(x_i)\,dt + \sigma\,dW_t$. Tracks the synchronization error $e(t) = x_1(t) - x_2(t)$ and validates Lyapunov-based stability criteria under varying noise intensities $\sigma$. Implements Euler–Maruyama and Milstein schemes.
+          </p>
+          <div class="key-result">
+            📊 <strong>Key Result:</strong> Mean-square synchronization is achievable even under noise intensity $\sigma \leq 0.3$ with appropriate coupling strength $c &gt; \lambda_{\max}$.
+          </div>
+          <div class="project-footer">
+            <a href="research.html" class="btn btn-outline">View Research</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3: Fractional NN Sync -->
+      <div class="project-card">
+        <div class="project-canvas-area">
+          <canvas id="proj-canvas-3"></canvas>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">Fractional Systems</span>
+            <span class="tag matlab">MATLAB</span>
+            <span class="tag">Quaternion</span>
+            <span class="tag">Published</span>
+          </div>
+          <h3 class="project-title">Fractional-Order Quaternion Neural Network Synchronization</h3>
+          <p class="project-desc">
+            MATLAB simulation of finite-time synchronization of two coupled fractional-order quaternion-valued neural networks via sliding mode control. Implements the Adams–Bashforth–Moulton predictor-corrector method for fractional integration, tracking all four quaternion components $(q_0, q_1, q_2, q_3)$.
+          </p>
+          <div class="key-result">
+            📊 <strong>Key Result:</strong> Finite-time convergence proven: $T^* \leq T_{\max}$ regardless of initial conditions, with Lyapunov function $V(t) \leq V(0) e^{-\beta t^\alpha}$.
+          </div>
+          <div class="project-footer">
+            <a href="https://doi.org/10.1080/00207160.2024.2383198" class="btn btn-outline" target="_blank" rel="noopener">Published Paper ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4: Lyapunov Stability Visualizer -->
+      <div class="project-card">
+        <div class="project-canvas-area">
+          <canvas id="proj-canvas-4"></canvas>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">Control Theory</span>
+            <span class="tag python">Python</span>
+            <span class="tag scipy">Matplotlib</span>
+            <span class="tag">Educational</span>
+          </div>
+          <h3 class="project-title">Lyapunov Stability Region &amp; Phase Portrait Explorer</h3>
+          <p class="project-desc">
+            Interactive phase portrait generator for 2D nonlinear dynamical systems. Plots level sets of Lyapunov candidate functions $V(\mathbf{x})$ alongside system trajectories, visually confirming that $\dot{V} \leq -\alpha V$ (exponential stability) or $\dot{V} \leq 0$ (Lyapunov stability). Used as a teaching tool for MATH courses at Newton School of Technology.
+          </p>
+          <div class="key-result">
+            📊 <strong>Used in:</strong> Engineering Mathematics (Newton School of Technology) and shared on the Maths for All platform.
+          </div>
+          <div class="project-footer">
+            <a href="https://mdsamhussain1996.github.io/Mathsforall/" class="btn btn-outline" target="_blank" rel="noopener">Maths for All Platform ↗</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Maths for All promo -->
+    <div style="margin-top:3rem; padding:2rem; background:linear-gradient(135deg,#1a202c,#2d3748); border-radius:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+      <div>
+        <h3 style="color:white; font-family:var(--font-serif); margin-bottom:0.35rem;">📐 Maths for All — Open Learning Platform</h3>
+        <p style="color:#a0aec0; font-size:0.9rem; max-width:600px; line-height:1.6;">Interactive curriculum with visualizations, code, and intuition-first pedagogy. Built alongside my teaching at Newton School of Technology.</p>
+      </div>
+      <a href="https://mdsamhussain1996.github.io/Mathsforall/" class="btn" style="background:white;color:#1a202c;border:none;" target="_blank" rel="noopener">Explore →</a>
     </div>
   </main>
 
   <portfolio-footer></portfolio-footer>
+
+  <script>
+  // ── Canvas 1: Multi-Agent Consensus Preview ──
+  (function() {
+    const cv = document.getElementById('proj-canvas-1');
+    cv.width = cv.offsetWidth * devicePixelRatio || 800;
+    cv.height = 220 * devicePixelRatio || 220;
+    cv.style.width = '100%'; cv.style.height = '220px';
+    const ctx = cv.getContext('2d');
+    ctx.scale(devicePixelRatio || 1, devicePixelRatio || 1);
+    const W = cv.offsetWidth || 500, H = 220;
+    const n = 8;
+    const nodes = [], R = Math.min(W,H)/2 - 45;
+    const cx0 = W/2, cy0 = H/2;
+    for(let i=0;i<n;i++){
+      const a=(2*Math.PI*i/n)-Math.PI/2;
+      nodes.push({ x:cx0+R*Math.cos(a), y:cy0+R*Math.sin(a), val:Math.random() });
+    }
+    let t=0;
+    function loop(){
+      ctx.clearRect(0,0,W,H);
+      ctx.fillStyle='#f7faff'; ctx.fillRect(0,0,W,H);
+      t+=0.015;
+      const eps=0.03;
+      const nv=nodes.map((_,i)=>{
+        const dv=[(i-1+n)%n,(i+1)%n].reduce((s,j)=>s+(nodes[j].val-nodes[i].val),0);
+        return nodes[i].val+eps*dv;
+      });
+      nodes.forEach((nd,i)=>nd.val=nv[i]);
+      // edges
+      nodes.forEach((nd,i)=>{
+        [[i-1+n,n],[i+1,n]].map(([j])=>j%n).forEach(j=>{
+          if(j>i){ ctx.beginPath(); ctx.moveTo(nd.x,nd.y); ctx.lineTo(nodes[j].x,nodes[j].y);
+            ctx.strokeStyle='#c3dafe'; ctx.lineWidth=1.5; ctx.stroke(); }
+        });
+      });
+      nodes.forEach(nd=>{
+        const r=nd.val, b=1-nd.val, g=Math.sin(nd.val*Math.PI);
+        ctx.beginPath(); ctx.arc(nd.x,nd.y,16,0,Math.PI*2);
+        ctx.fillStyle=`rgb(${Math.round(r*220)},${Math.round(g*180)},${Math.round(b*220)})`;
+        ctx.fill(); ctx.strokeStyle='white'; ctx.lineWidth=2; ctx.stroke();
+        ctx.fillStyle='white'; ctx.font='bold 9px sans-serif';
+        ctx.textAlign='center'; ctx.textBaseline='middle';
+        ctx.fillText(nd.val.toFixed(2),nd.x,nd.y);
+      });
+      requestAnimationFrame(loop);
+    }
+    loop();
+  })();
+
+  // ── Canvas 2: Stochastic Trajectories ──
+  (function() {
+    const cv = document.getElementById('proj-canvas-2');
+    const W = cv.parentElement.offsetWidth || 500, H = 220;
+    cv.width = W; cv.height = H;
+    const ctx = cv.getContext('2d');
+    let t=0, x1=0.8, x2=0.2, trail1=[], trail2=[], errTrail=[];
+    const sigma=0.04, c=1.5, dt=0.02;
+    const maxLen=200;
+    function loop(){
+      // SDE Euler-Maruyama: dx = -cx dt + sigma dW
+      const dW1=(Math.random()-0.5)*Math.sqrt(dt)*2;
+      const dW2=(Math.random()-0.5)*Math.sqrt(dt)*2;
+      x1 += (-c*x1 + c*x2)*dt + sigma*dW1;
+      x2 += (-c*x2 + c*x1)*dt + sigma*dW2;
+      x1 = Math.max(-1, Math.min(1,x1));
+      x2 = Math.max(-1, Math.min(1,x2));
+      trail1.push(x1); trail2.push(x2); errTrail.push(Math.abs(x1-x2));
+      if(trail1.length>maxLen){ trail1.shift(); trail2.shift(); errTrail.shift(); }
+      ctx.clearRect(0,0,W,H);
+      ctx.fillStyle='#f7faff'; ctx.fillRect(0,0,W,H);
+      // midline
+      ctx.beginPath(); ctx.setLineDash([3,4]);
+      ctx.moveTo(0,H/2); ctx.lineTo(W,H/2);
+      ctx.strokeStyle='#e2e8f0'; ctx.lineWidth=1; ctx.stroke(); ctx.setLineDash([]);
+      // draw trails
+      [[trail1,'#2c5282'],[trail2,'#e53e3e'],[errTrail.map(v=>v-0.5),'#d69e2e']].forEach(([arr,col])=>{
+        if(arr.length<2) return;
+        ctx.beginPath();
+        arr.forEach((v,i)=>{ const px=i/maxLen*W, py=H/2-v*(H/2-10);
+          i===0?ctx.moveTo(px,py):ctx.lineTo(px,py); });
+        ctx.strokeStyle=col; ctx.lineWidth=1.5; ctx.stroke();
+      });
+      // Legend
+      [['— x₁(t)','#2c5282'],['— x₂(t)','#e53e3e'],['— |error|','#d69e2e']].forEach(([lbl,col],i)=>{
+        ctx.fillStyle=col; ctx.font='bold 10px sans-serif'; ctx.textAlign='left';
+        ctx.fillText(lbl, 10+i*100, 16);
+      });
+      requestAnimationFrame(loop);
+    }
+    loop();
+  })();
+
+  // ── Canvas 3: Fractional sync error convergence ──
+  (function() {
+    const cv = document.getElementById('proj-canvas-3');
+    const W = cv.parentElement.offsetWidth || 500, H = 220;
+    cv.width = W; cv.height = H;
+    const ctx = cv.getContext('2d');
+    const pts = [];
+    const alpha=0.9;
+    for(let i=0;i<=W;i++){
+      const t=i/W*10;
+      pts.push(Math.exp(-0.45*Math.pow(t,alpha))*(0.8+Math.random()*0.04));
+    }
+    ctx.fillStyle='#f7faff'; ctx.fillRect(0,0,W,H);
+    // axes
+    ctx.strokeStyle='#e2e8f0'; ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(30,10); ctx.lineTo(30,H-30); ctx.lineTo(W-10,H-30); ctx.stroke();
+    // curve
+    ctx.beginPath();
+    pts.forEach((v,i)=>{ const px=30+i/pts.length*(W-40), py=(H-30)-(v*(H-50));
+      i===0?ctx.moveTo(px,py):ctx.lineTo(px,py); });
+    ctx.strokeStyle='#2c5282'; ctx.lineWidth=2; ctx.stroke();
+    // fill under
+    ctx.lineTo(W-10,H-30); ctx.lineTo(30,H-30);
+    ctx.fillStyle='rgba(44,82,130,0.08)'; ctx.fill();
+    ctx.fillStyle='#2c5282'; ctx.font='bold 11px sans-serif'; ctx.textAlign='left';
+    ctx.fillText('‖e(t)‖ synchronization error', 38, 22);
+    ctx.fillStyle='#718096'; ctx.font='10px sans-serif';
+    ctx.fillText('t →', W-30, H-15);
+    ctx.fillText('α=0.9 (fractional order)', 38, H-12);
+  })();
+
+  // ── Canvas 4: Lyapunov level sets ──
+  (function() {
+    const cv = document.getElementById('proj-canvas-4');
+    const W = cv.parentElement.offsetWidth || 500, H = 220;
+    cv.width = W; cv.height = H;
+    const ctx = cv.getContext('2d');
+    ctx.fillStyle='#f7faff'; ctx.fillRect(0,0,W,H);
+    const cx0=W/2, cy0=H/2, scl=60;
+    // Draw level sets of V(x,y) = x^2 + 2y^2
+    [0.15,0.4,0.8,1.3,2.0].forEach((r,idx)=>{
+      const alpha=0.15+idx*0.12;
+      ctx.beginPath();
+      for(let a=0;a<=Math.PI*2+0.1;a+=0.02){
+        const x=Math.sqrt(r)*Math.cos(a)*scl, y=Math.sqrt(r/2)*Math.sin(a)*scl;
+        a<0.01?ctx.moveTo(cx0+x,cy0+y):ctx.lineTo(cx0+x,cy0+y);
+      }
+      ctx.closePath();
+      ctx.strokeStyle=`rgba(44,82,130,${alpha+0.3})`; ctx.lineWidth=1.5; ctx.stroke();
+      ctx.fillStyle=`rgba(66,153,225,${alpha*0.4})`; ctx.fill();
+    });
+    // Trajectory spiraling in
+    ctx.beginPath();
+    let ang=0.2, rad=1.8;
+    while(rad>0.08){
+      const x=Math.sqrt(rad)*Math.cos(ang)*scl, y=Math.sqrt(rad/2)*Math.sin(ang)*scl;
+      ang<0.3?ctx.moveTo(cx0+x,cy0+y):ctx.lineTo(cx0+x,cy0+y);
+      ang+=0.12; rad*=0.965;
+    }
+    ctx.strokeStyle='#e53e3e'; ctx.lineWidth=2; ctx.stroke();
+    // Labels
+    ctx.fillStyle='#2c5282'; ctx.font='bold 11px sans-serif'; ctx.textAlign='left';
+    ctx.fillText('V(x,y) = x² + 2y²  level sets', 8, 18);
+    ctx.fillStyle='#e53e3e';
+    ctx.fillText('— system trajectory', 8, 34);
+    // equilibrium
+    ctx.beginPath(); ctx.arc(cx0,cy0,5,0,Math.PI*2);
+    ctx.fillStyle='#276749'; ctx.fill();
+    ctx.fillStyle='#276749'; ctx.font='bold 10px sans-serif';
+    ctx.fillText('0 (stable eq.)', cx0+8, cy0+4);
+  })();
+  </script>
 </body>
 </html>
