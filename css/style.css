@@ -395,3 +395,28 @@ footer {
   border-top: 1px solid var(--border-color);
   background: var(--bg-alt);
 }
+
+/* ══════════════════════════════════════════
+   DARK MODE OVERRIDES for page-level hardcoded colours
+══════════════════════════════════════════ */
+[data-theme="dark"] .hero-wrapper {
+  background: linear-gradient(135deg, #131a2b 0%, #16213a 50%, #101828 100%);
+  border-color: var(--border-color);
+}
+[data-theme="dark"] .hero-photo { border-color: var(--accent); box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
+[data-theme="dark"] .hero-eyebrow { color: var(--accent); background: var(--accent-light); border-color: var(--border-color); }
+[data-theme="dark"] .hero-eyebrow span { background: var(--accent); }
+[data-theme="dark"] .hero-subtitle,
+[data-theme="dark"] .stat-num,
+[data-theme="dark"] .collab-papers,
+[data-theme="dark"] .current-work-banner h3,
+[data-theme="dark"] .work-item::before { color: var(--accent); }
+[data-theme="dark"] .hero-stats { background: rgba(26,31,46,0.75); border-color: var(--border-color); }
+[data-theme="dark"] .current-work-banner {
+  background: var(--accent-light);
+  border-color: var(--border-color);
+  border-left-color: var(--accent);
+}
+[data-theme="dark"] .collab-name,
+[data-theme="dark"] .ref-name { color: var(--text-main); }
+[data-theme="dark"] .collab-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
