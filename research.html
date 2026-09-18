@@ -211,27 +211,7 @@
       </div>
     </div>
 
-    <!-- Interactive Multi-Agent Consensus Visualization -->
-    <h2 style="font-size:1.6rem; margin: 3rem 0 0.5rem;">Research Visualization</h2>
-    <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem;">
-      Interactive simulation: watch distributed agents reach consensus — each node starts with a random value and converges to a shared state through local communication only.
-    </p>
-    <div class="research-viz-box">
-      <div class="viz-header">
-        <span class="viz-title">🌐 Multi-Agent Consensus Protocol — Live Simulation</span>
-        <div class="viz-controls">
-          <button class="viz-btn active" id="btn-reset" onclick="resetConsensus()">↺ Reset</button>
-          <button class="viz-btn" id="btn-run" onclick="toggleConsensus()">▶ Run Consensus</button>
-          <button class="viz-btn" id="btn-topo" onclick="cycleTopology()">Switch Topology</button>
-        </div>
-      </div>
-      <div class="viz-canvas-wrap">
-        <canvas id="canvas-consensus" width="760" height="340"></canvas>
-      </div>
-      <div class="viz-caption" id="viz-caption">
-        Each node holds a random initial value (shown by color). Click <strong>Run Consensus</strong> to watch agents exchange information and converge — demonstrating the average-consensus protocol $\dot{x}_i = -\sum_{j \in \mathcal{N}_i}(x_i - x_j)$.
-      </div>
-    </div>
+
 
     <!-- Publications -->
     <h1 class="page-title" style="margin-top:4rem;">Publications</h1>
