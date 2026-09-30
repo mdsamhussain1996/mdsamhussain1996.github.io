@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Publications — Dr. Md Samshad Hussain Ansari</title>
+  <meta name="description" content="Peer-reviewed publications by Dr. Md Samshad Hussain Ansari on fractional-order systems, quaternion-valued neural networks, synchronization, and controllability." />
+  <meta property="og:title" content="Publications — Dr. Md Samshad Hussain Ansari" />
+  <meta property="og:description" content="Full list of publications in fractional calculus, neural network synchronization, and mathematical control theory." />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/components.js" defer></script>
+  <script src="js/publications.js" defer></script>
+  <style>
+    /* ── Filter bar ── */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.75rem;
+      align-items: center;
+    }
+    .filter-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-right: 0.25rem;
+    }
+    .filter-btn {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 0.3rem 0.85rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-family: var(--font-sans);
+      transition: all 0.2s;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .filter-sep {
+      width: 1px; height: 24px;
+      background: var(--border-color);
+      margin: 0 0.25rem;
+    }
+
+    /* ── Publication card ── */
+    .pub-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .pub-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--card-shadow); }
+    .pub-card.hidden { display: none; }
+
+    .pub-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+    .pub-card-meta { flex: 1; }
+    .pub-card-actions { display: flex; gap: 0.5rem; flex-shrink: 0; flex-wrap: wrap; }
+
+    .pub-card-title {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--text-main);
+      margin-bottom: 0.4rem;
+      line-height: 1.45;
+    }
+    .pub-card-authors {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+    }
+    .pub-card-authors strong { color: var(--text-main); font-weight: 700; }
+    .pub-card-venue {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    .pub-card-venue a { color: var(--accent); font-style: normal; font-weight: 700; }
+
+    /* ── Expandable abstract ── */
+    .abstract-toggle {
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      font-family: var(--font-sans);
+      cursor: pointer;
+      padding: 0;
+      margin-top: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .abstract-toggle .arrow { transition: transform 0.25s; display: inline-block; }
+    .abstract-toggle.open .arrow { transform: rotate(90deg); }
+
+    .abstract-body {
+      display: none;
+      margin-top: 0.75rem;
+      padding: 1rem;
+      background: var(--bg-color);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      border: 1px solid var(--border-color);
+    }
+    .abstract-body.open { display: block; animation: fadeIn 0.2s ease-out; }
+
+    /* ── BibTeX toast ── */
+    #bibtex-toast {
+      position: fixed;
+      bottom: 2rem; left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #2c5282;
+      color: #fff;
+      padding: 0.6rem 1.4rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 9999;
+      pointer-events: none;
+    }
+    #bibtex-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ── Selected works section ── */
+    .selected-section {
+      margin-bottom: 3rem;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, #ebf8ff 0%, #e8f4fd 100%);
+      border: 1px solid #bee3f8;
+      border-radius: 12px;
+    }
+    [data-theme="dark"] .selected-section {
+      background: linear-gradient(135deg, #0d1f3c 0%, #111827 100%);
+      border-color: var(--border-color);
+    }
+    .selected-section .section-label { margin-bottom: 1rem; }
+    .selected-section .pub-card {
+      background: var(--bg-alt);
+      border-color: var(--border-color);
+    }
+
+    /* ── Stats bar ── */
+    .pub-stats {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .pub-stat { text-align: center; }
+    .pub-stat-num {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+    }
+    .pub-stat-lbl {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    /* ── No results ── */
+    .no-results {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--text-muted);
+      display: none;
+    }
+    .no-results.show { display: block; }
+
+    @media (max-width: 600px) {
+      .pub-card-header { flex-direction: column; }
+      .pub-card-actions { align-self: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-container">
+    <portfolio-navbar></portfolio-navbar>
+  </div>
+
+  <main>
+    <h1 class="page-title">Publications</h1>
+
+    <!-- Stats bar -->
+    <div class="pub-stats">
+      <div class="pub-stat">
+        <span class="pub-stat-num" id="total-count">—</span>
+        <span class="pub-stat-lbl">Papers</span>
+      </div>
+      <div class="pub-stat">
+        <a href="https://scholar.google.com/citations?user=3b2jd4EAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" style="text-decoration:none">
+          <span class="pub-stat-num">150+</span><!-- TODO: Update citation count -->
+          <span class="pub-stat-lbl">Citations ↗</span>
+        </a>
+      </div>
+      <div class="pub-stat">
+        <span class="pub-stat-num" id="year-range">—</span>
+        <span class="pub-stat-lbl">Year range</span>
+      </div>
+    </div>
+
+    <!-- ── Selected Works ── -->
+    <section class="selected-section" aria-labelledby="selected-heading">
+      <div class="section-label" id="selected-heading">⭐ Selected Works</div>
+      <div id="selected-list"></div>
+    </section>
+
+    <!-- ── Filter Bar ── -->
+    <div class="filter-bar" role="group" aria-label="Filter publications">
+      <span class="filter-label">Year:</span>
+      <button class="filter-btn active" data-filter-year="all" id="year-all">All Years</button>
+      <!-- Year buttons injected by JS -->
+      <div id="year-filter-btns" style="display:contents"></div>
+
+      <div class="filter-sep" aria-hidden="true"></div>
+
+      <span class="filter-label">Topic:</span>
+      <button class="filter-btn active" data-filter-topic="all" id="topic-all">All Topics</button>
+      <button class="filter-btn" data-filter-topic="fractional">Fractional Systems</button>
+      <button class="filter-btn" data-filter-topic="neural-networks">Neural Networks</button>
+      <button class="filter-btn" data-filter-topic="synchronization">Synchronization</button>
+      <button class="filter-btn" data-filter-topic="control">Control</button>
+    </div>
+
+    <!-- ── All Publications ── -->
+    <section aria-label="All publications">
+      <div id="pub-list"></div>
+      <div class="no-results" id="no-results">No publications match the selected filters.</div>
+    </section>
+  </main>
+
+  <portfolio-footer></portfolio-footer>
+  <div id="bibtex-toast" role="alert" aria-live="polite">BibTeX copied to clipboard!</div>
+
+  <script>
+  // Render publications
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof PUBLICATIONS === 'undefined') return;
+
+    const list = document.getElementById('pub-list');
+    const selectedList = document.getElementById('selected-list');
+    const totalCount = document.getElementById('total-count');
+    const yearRange = document.getElementById('year-range');
+    const noResults = document.getElementById('no-results');
+
+    let activeYear = 'all';
+    let activeTopic = 'all';
+
+    // Helper: parse author markdown (**name** = bold)
+    function renderAuthors(str) {
+      return str.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    }
+
+    // Build a single pub card element
+    function buildCard(pub, showSelectedBadge = false) {
+      const card = document.createElement('div');
+      card.className = 'pub-card';
+      card.dataset.year = pub.year;
+      card.dataset.topics = pub.topics.join(' ');
+
+      const topicBadges = pub.topics.map(t => {
+        const labels = { fractional: 'Fractional', 'neural-networks': 'Neural Networks', synchronization: 'Synchronization', control: 'Control' };
+        return `<span class="badge badge-topic">${labels[t] || t}</span>`;
+      }).join('');
+
+      const doiHref = pub.doi && !pub.doi.startsWith('TODO') ? `https://doi.org/${pub.doi}` : '#';
+      const doiDisplay = pub.doi && !pub.doi.startsWith('TODO') ? pub.doi : 'TODO: DOI';
+      const doiAttr = pub.doi && !pub.doi.startsWith('TODO') ? '' : ' style="opacity:0.5;cursor:not-allowed"';
+
+      card.innerHTML = `
+        <div class="pub-card-header">
+          <div class="pub-card-meta">
+            <div style="margin-bottom:0.4rem">
+              <span class="badge badge-year">${pub.year}</span>
+              ${showSelectedBadge ? '<span class="badge" style="color:#b7791f;background:#feebc8;border-color:#d69e2e">⭐ Selected</span>' : ''}
+              ${topicBadges}
+            </div>
+            <div class="pub-card-title">${pub.title}</div>
+            <div class="pub-card-authors">${renderAuthors(pub.authors)}</div>
+            <div class="pub-card-venue">
+              ${pub.journal} ·
+              <a href="${doiHref}" target="_blank" rel="noopener" aria-label="DOI link"${doiAttr}>DOI: ${doiDisplay}</a>
+            </div>
+            <button class="abstract-toggle" aria-expanded="false" aria-controls="abstract-${pub.id}">
+              <span class="arrow">▶</span> Abstract
+            </button>
+            <div class="abstract-body" id="abstract-${pub.id}" role="region" aria-label="Abstract">
+              ${pub.abstract}
+            </div>
+          </div>
+          <div class="pub-card-actions">
+            <button class="btn btn-sm btn-outline bibtex-btn" data-id="${pub.id}" aria-label="Copy BibTeX for ${pub.title}">
+              BibTeX
+            </button>
+          </div>
+        </div>
+      `;
+
+      // Abstract toggle
+      const toggleBtn = card.querySelector('.abstract-toggle');
+      const abstractDiv = card.querySelector('.abstract-body');
+      toggleBtn.addEventListener('click', () => {
+        const isOpen = abstractDiv.classList.toggle('open');
+        toggleBtn.classList.toggle('open', isOpen);
+        toggleBtn.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      // BibTeX copy
+      card.querySelector('.bibtex-btn').addEventListener('click', () => {
+        const text = PUBLICATIONS.find(p => p.id === pub.id)?.bibtex || '';
+        navigator.clipboard.writeText(text).then(() => showToast()).catch(() => {
+          // Fallback
+          const ta = document.createElement('textarea');
+          ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+          document.body.appendChild(ta); ta.select();
+          document.execCommand('copy'); document.body.removeChild(ta);
+          showToast();
+        });
+      });
+
+      return card;
+    }
+
+    function showToast() {
+      const toast = document.getElementById('bibtex-toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    // Stats
+    const years = [...new Set(PUBLICATIONS.map(p => p.year))].sort((a,b) => b - a);
+    totalCount.textContent = PUBLICATIONS.length;
+    if (years.length) yearRange.textContent = `${years[years.length-1]}–${years[0]}`;
+
+    // Year filter buttons
+    const yearContainer = document.getElementById('year-filter-btns');
+    years.forEach(y => {
+      const btn = document.createElement('button');
+      btn.className = 'filter-btn';
+      btn.dataset.filterYear = String(y);
+      btn.textContent = y;
+      yearContainer.appendChild(btn);
+    });
+
+    // Selected works
+    PUBLICATIONS.filter(p => p.selected).forEach(pub => {
+      selectedList.appendChild(buildCard(pub, true));
+    });
+
+    // All publications (sorted newest first)
+    const sorted = [...PUBLICATIONS].sort((a, b) => b.year - a.year);
+    sorted.forEach(pub => list.appendChild(buildCard(pub)));
+
+    // Filter logic
+    function applyFilters() {
+      let anyVisible = false;
+      list.querySelectorAll('.pub-card').forEach(card => {
+        const yearMatch = activeYear === 'all' || card.dataset.year === activeYear;
+        const topicMatch = activeTopic === 'all' || card.dataset.topics.split(' ').includes(activeTopic);
+        const visible = yearMatch && topicMatch;
+        card.classList.toggle('hidden', !visible);
+        if (visible) anyVisible = true;
+      });
+      noResults.classList.toggle('show', !anyVisible);
+    }
+
+    // Bind filter buttons
+    document.querySelectorAll('[data-filter-year]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-filter-year]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeYear = btn.dataset.filterYear;
+        applyFilters();
+      });
+    });
+
+    document.querySelectorAll('[data-filter-topic]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-filter-topic]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeTopic = btn.dataset.filterTopic;
+        applyFilters();
+      });
+    });
+  });
+  </script>
+</body>
+</html>

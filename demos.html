@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interactive Demos — Dr. Md Samshad Hussain Ansari</title>
+  <meta name="description" content="Interactive browser demos of synchronization of coupled chaotic neural systems, with live controls for coupling gain and initial conditions." />
+  <meta property="og:title" content="Interactive Demos — Dr. Md Samshad Hussain Ansari" />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/components.js" defer></script>
+  <!-- KaTeX for equation rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+    onload="renderMathInElement(document.getElementById('demo-math'), {delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}]})"></script>
+
+  <style>
+    /* ── Demo container ── */
+    .demo-hero {
+      background: linear-gradient(135deg, #ebf8ff 0%, #e8f4fd 100%);
+      border: 1px solid #bee3f8;
+      border-radius: 14px;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    [data-theme="dark"] .demo-hero {
+      background: linear-gradient(135deg, #0d1f3c 0%, #111827 100%);
+      border-color: var(--border-color);
+    }
+
+    .demo-layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 760px) {
+      .demo-layout { grid-template-columns: 1fr; }
+    }
+
+    /* ── Controls panel ── */
+    .controls-panel {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+
+    .controls-panel h3 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-family: var(--font-sans);
+      margin-bottom: 1.25rem;
+    }
+
+    .control-row {
+      margin-bottom: 1.25rem;
+    }
+
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.4rem;
+    }
+
+    .control-label span { color: var(--accent); font-family: monospace; }
+
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .control-hint {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .demo-btn-row {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* ── Canvas ── */
+    .canvas-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .canvas-wrapper {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    .canvas-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    canvas { width: 100%; border-radius: 6px; display: block; }
+    #canvas-states  { height: 180px; }
+    #canvas-error   { height: 140px; }
+    #canvas-phase   { height: 220px; }
+
+    /* ── Status bar ── */
+    .status-bar {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
+    }
+    .status-item { font-size: 0.8rem; }
+    .status-item span { font-weight: 700; color: var(--accent); }
+
+    /* ── Math section ── */
+    .math-section {
+      margin-top: 2.5rem;
+      padding: 1.75rem 2rem;
+      background: var(--bg-alt);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+    }
+    .math-section h2 { font-size: 1.3rem; margin-bottom: 0.75rem; }
+    .math-section p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 0.75rem; }
+
+    /* KaTeX display override for dark mode */
+    [data-theme="dark"] .katex { color: var(--text-main); }
+
+    .equation-block {
+      overflow-x: auto;
+      padding: 0.75rem 0;
+    }
+
+    .legend-row { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.82rem; color: var(--text-muted); margin-top: 0.5rem; }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 0.35rem; vertical-align: middle; }
+  </style>
+</head>
+<body>
+  <div id="navbar-container">
+    <portfolio-navbar></portfolio-navbar>
+  </div>
+
+  <main>
+    <h1 class="page-title">Interactive Demos</h1>
+    <p style="color:var(--text-muted);margin-bottom:2rem;font-size:0.97rem;line-height:1.8">
+      The demo below shows two coupled nonlinear oscillators (a <strong>drive–response</strong> pair inspired
+      by the Lorenz and Rössler-type systems used in my synchronization research). Adjust the coupling gain
+      and initial conditions to see how the synchronization error evolves in real time.
+    </p>
+
+    <!-- ── Demo 1 ── -->
+    <div class="demo-hero">
+      <div class="section-label" style="margin-bottom:0.75rem">Demo 1 · Drive–Response Synchronization</div>
+      <h2 style="font-size:1.4rem;margin-bottom:1.5rem">
+        Chaos Synchronization: Lorenz-Type Drive–Response System
+      </h2>
+
+      <div class="demo-layout">
+        <!-- Controls -->
+        <div class="controls-panel">
+          <h3>⚙️ Parameters</h3>
+
+          <div class="control-row">
+            <div class="control-label">Coupling Gain (k) <span id="val-k">0.50</span></div>
+            <input type="range" id="slider-k" min="0" max="3" step="0.01" value="0.5" aria-label="Coupling gain"/>
+            <div class="control-hint">k = 0 → no coupling; k ≥ 1 → synchronization typically achieved</div>
+          </div>
+
+          <div class="control-row">
+            <div class="control-label">Drive x₀ <span id="val-x0">1.00</span></div>
+            <input type="range" id="slider-x0" min="-5" max="5" step="0.1" value="1.0" aria-label="Drive initial x"/>
+          </div>
+
+          <div class="control-row">
+            <div class="control-label">Response x₀ offset <span id="val-offset">3.00</span></div>
+            <input type="range" id="slider-offset" min="0" max="10" step="0.1" value="3.0" aria-label="Response initial condition offset"/>
+            <div class="control-hint">Initial distance between drive and response trajectories</div>
+          </div>
+
+          <div class="control-row">
+            <div class="control-label">Speed <span id="val-speed">1×</span></div>
+            <input type="range" id="slider-speed" min="1" max="8" step="1" value="2" aria-label="Simulation speed"/>
+          </div>
+
+          <div class="demo-btn-row">
+            <button class="btn btn-sm" id="btn-play" aria-label="Play or pause simulation">⏸ Pause</button>
+            <button class="btn btn-sm btn-outline" id="btn-reset" aria-label="Reset simulation">↺ Reset</button>
+          </div>
+
+          <div class="status-bar" style="margin-top:1.25rem">
+            <div class="status-item">Time: <span id="stat-time">0.00</span>s</div>
+            <div class="status-item">Error: <span id="stat-error">—</span></div>
+            <div class="status-item">Synced: <span id="stat-sync">—</span></div>
+          </div>
+        </div>
+
+        <!-- Canvases -->
+        <div class="canvas-stack">
+          <div class="canvas-wrapper">
+            <div class="canvas-title">State Trajectories (x-component)</div>
+            <canvas id="canvas-states" aria-label="State trajectories plot"></canvas>
+            <div class="legend-row">
+              <span><span class="legend-dot" style="background:#2c5282"></span>Drive</span>
+              <span><span class="legend-dot" style="background:#e53e3e"></span>Response</span>
+            </div>
+          </div>
+          <div class="canvas-wrapper">
+            <div class="canvas-title">Synchronization Error ‖e(t)‖</div>
+            <canvas id="canvas-error" aria-label="Synchronization error plot"></canvas>
+          </div>
+          <div class="canvas-wrapper">
+            <div class="canvas-title">Phase Portrait (Drive: x vs y)</div>
+            <canvas id="canvas-phase" aria-label="Phase portrait"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Math explanation -->
+    <div class="math-section" id="demo-math">
+      <h2>Governing Equations</h2>
+      <p>
+        The <strong>drive</strong> system is a Lorenz-type chaotic oscillator:
+      </p>
+      <div class="equation-block">
+        $$\dot{x}_1 = \sigma(x_2 - x_1), \quad \dot{x}_2 = x_1(\rho - x_3) - x_2, \quad \dot{x}_3 = x_1 x_2 - \beta x_3$$
+      </div>
+      <p>
+        with classical parameters \(\sigma = 10,\; \rho = 28,\; \beta = 8/3\). The <strong>response</strong>
+        system has the same structure but receives a coupling signal proportional to the synchronization error:
+      </p>
+      <div class="equation-block">
+        $$\dot{y}_1 = \sigma(y_2 - y_1) - k(y_1 - x_1)$$
+        $$\dot{y}_2 = y_1(\rho - y_3) - y_2 - k(y_2 - x_2)$$
+        $$\dot{y}_3 = y_1 y_2 - \beta y_3 - k(y_3 - x_3)$$
+      </div>
+      <p>
+        The <strong>synchronization error</strong> is \(e(t) = y(t) - x(t)\). When \(k\) is large enough,
+        \(\|e(t)\| \to 0\) as \(t \to \infty\), meaning the response system <em>asymptotically synchronizes</em>
+        with the drive. This is exactly the phenomenom studied in my fractional-order quaternion-valued neural
+        network synchronization research — here shown in the simpler integer-order Lorenz setting for clarity.
+      </p>
+      <p>
+        In my published work, the fractional derivative \({}^C\!D^\alpha\) (Caputo sense, \(0 < \alpha < 1\))
+        replaces \(d/dt\), encoding memory effects. The coupling controller \(u(t) = -k\,e(t)\) is designed
+        via Lyapunov's direct method using the fractional Razumikhin theorem.
+      </p>
+    </div>
+  </main>
+
+  <portfolio-footer></portfolio-footer>
+
+  <script>
+  // ─── Lorenz Drive-Response Synchronization Demo ───────────────────────────
+  (function () {
+    const sigma = 10, rho = 28, beta = 8/3;
+    const TRAIL = 600;
+
+    // State: [x1,x2,x3,y1,y2,y3]
+    let state, t, running, animId, speed;
+    let histX = [], histY = [], histE = [];
+    let drivePhaseX = [], drivePhaseY = [];
+
+    function getK()      { return parseFloat(document.getElementById('slider-k').value); }
+    function getX0()     { return parseFloat(document.getElementById('slider-x0').value); }
+    function getOffset() { return parseFloat(document.getElementById('slider-offset').value); }
+    function getSpeed()  { return parseInt(document.getElementById('slider-speed').value); }
+
+    function initState() {
+      const x0 = getX0(), off = getOffset();
+      state = [x0, 0, 1,  x0 + off, 1, 1];
+      t = 0;
+      histX = []; histY = []; histE = [];
+      drivePhaseX = []; drivePhaseY = [];
+    }
+
+    function lorenzDrv(s) {
+      const [x1,x2,x3] = s;
+      return [sigma*(x2-x1), x1*(rho-x3)-x2, x1*x2-beta*x3];
+    }
+
+    function step(dt, k) {
+      const [x1,x2,x3,y1,y2,y3] = state;
+      const dx = lorenzDrv([x1,x2,x3]);
+      const dy = [
+        sigma*(y2-y1) - k*(y1-x1),
+        y1*(rho-y3)-y2 - k*(y2-x2),
+        y1*y2-beta*y3  - k*(y3-x3)
+      ];
+      // Euler integration
+      state = [
+        x1+dx[0]*dt, x2+dx[1]*dt, x3+dx[2]*dt,
+        y1+dy[0]*dt, y2+dy[1]*dt, y3+dy[2]*dt
+      ];
+      t += dt;
+    }
+
+    function error() {
+      const [x1,x2,x3,y1,y2,y3] = state;
+      return Math.sqrt((y1-x1)**2+(y2-x2)**2+(y3-x3)**2);
+    }
+
+    // Canvas helpers
+    function getCtx(id) {
+      const c = document.getElementById(id);
+      c.width  = c.offsetWidth  * devicePixelRatio;
+      c.height = c.offsetHeight * devicePixelRatio;
+      const ctx = c.getContext('2d');
+      ctx.scale(devicePixelRatio, devicePixelRatio);
+      return { ctx, W: c.offsetWidth, H: c.offsetHeight };
+    }
+
+    function isDark() { return document.documentElement.getAttribute('data-theme') === 'dark'; }
+    function accent() { return isDark() ? '#63b3ed' : '#2c5282'; }
+    function bg()     { return isDark() ? '#1a1f2e' : '#ffffff'; }
+    function grid()   { return isDark() ? '#2d3748' : '#e2e8f0'; }
+
+    function drawStates() {
+      const { ctx, W, H } = getCtx('canvas-states');
+      ctx.fillStyle = bg(); ctx.fillRect(0,0,W,H);
+      if (histX.length < 2) return;
+
+      const all = [...histX, ...histY];
+      const mn = Math.min(...all), mx = Math.max(...all);
+      const rng = mx - mn || 1;
+      const pad = 24;
+      const toY = v => pad + (1-(v-mn)/rng)*(H-2*pad);
+      const toXp = (i,n) => pad + (i/(n-1))*(W-2*pad);
+
+      // Grid line at 0
+      ctx.strokeStyle = grid(); ctx.lineWidth = 0.5;
+      if (mn < 0 && mx > 0) {
+        const y0 = toY(0);
+        ctx.beginPath(); ctx.moveTo(pad, y0); ctx.lineTo(W-pad, y0); ctx.stroke();
+      }
+
+      // Drive
+      ctx.beginPath(); ctx.strokeStyle = accent(); ctx.lineWidth = 1.5;
+      histX.forEach((v,i,a) => {
+        const x = toXp(i,a.length), y = toY(v);
+        i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+      });
+      ctx.stroke();
+
+      // Response
+      ctx.beginPath(); ctx.strokeStyle = '#e53e3e'; ctx.lineWidth = 1.5;
+      histY.forEach((v,i,a) => {
+        const x = toXp(i,a.length), y = toY(v);
+        i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+      });
+      ctx.stroke();
+    }
+
+    function drawError() {
+      const { ctx, W, H } = getCtx('canvas-error');
+      ctx.fillStyle = bg(); ctx.fillRect(0,0,W,H);
+      if (histE.length < 2) return;
+
+      const mx = Math.max(...histE, 0.001);
+      const pad = 20;
+      const toY = v => pad + (1-v/mx)*(H-2*pad);
+      const toXp = (i,n) => pad + (i/(n-1))*(W-2*pad);
+
+      // Fill under curve
+      ctx.beginPath();
+      histE.forEach((v,i,a) => {
+        const x = toXp(i,a.length), y = toY(v);
+        if (i===0) { ctx.moveTo(x, H-pad); ctx.lineTo(x,y); }
+        else ctx.lineTo(x,y);
+      });
+      ctx.lineTo(toXp(histE.length-1,histE.length), H-pad);
+      ctx.closePath();
+      ctx.fillStyle = isDark() ? 'rgba(99,179,237,0.15)' : 'rgba(44,82,130,0.1)';
+      ctx.fill();
+
+      ctx.beginPath(); ctx.strokeStyle = accent(); ctx.lineWidth = 2;
+      histE.forEach((v,i,a) => {
+        const x = toXp(i,a.length), y = toY(v);
+        i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+      });
+      ctx.stroke();
+
+      // Label
+      ctx.font = '10px Lato, sans-serif'; ctx.fillStyle = isDark() ? '#8896b0' : '#718096';
+      ctx.fillText(`max: ${mx.toFixed(2)}`, pad+2, pad-4);
+    }
+
+    function drawPhase() {
+      const { ctx, W, H } = getCtx('canvas-phase');
+      ctx.fillStyle = bg(); ctx.fillRect(0,0,W,H);
+      if (drivePhaseX.length < 3) return;
+
+      const xs = drivePhaseX, ys = drivePhaseY;
+      const mnX=Math.min(...xs),mxX=Math.max(...xs)||1;
+      const mnY=Math.min(...ys),mxY=Math.max(...ys)||1;
+      const pad=20;
+      const tX=v=>pad+(v-mnX)/(mxX-mnX+1e-9)*(W-2*pad);
+      const tY=v=>pad+(1-(v-mnY)/(mxY-mnY+1e-9))*(H-2*pad);
+
+      for (let i=1;i<xs.length;i++) {
+        const t = i/xs.length;
+        const r = isDark() ? Math.round(99+t*(99-99)) : Math.round(44+t*(66-44));
+        const g = isDark() ? Math.round(179-t*80) : Math.round(82+t*130);
+        const b = isDark() ? Math.round(237-t*50) : Math.round(130+t*100);
+        ctx.strokeStyle = `rgba(${r},${g},${b},${0.4+t*0.6})`;
+        ctx.lineWidth = 1.2;
+        ctx.beginPath();
+        ctx.moveTo(tX(xs[i-1]),tY(ys[i-1]));
+        ctx.lineTo(tX(xs[i]),tY(ys[i]));
+        ctx.stroke();
+      }
+    }
+
+    function render() {
+      drawStates(); drawError(); drawPhase();
+
+      const e = error();
+      document.getElementById('stat-time').textContent  = t.toFixed(2);
+      document.getElementById('stat-error').textContent = e.toFixed(4);
+      document.getElementById('stat-sync').textContent  = e < 0.5 ? '✅ Yes' : '❌ No';
+    }
+
+    const DT = 0.002;
+    function loop() {
+      if (!running) return;
+      speed = getSpeed();
+      const k = getK();
+      for (let i=0; i<speed*4; i++) {
+        step(DT, k);
+        histX.push(state[0]); histY.push(state[3]);
+        histE.push(error());
+        drivePhaseX.push(state[0]); drivePhaseY.push(state[1]);
+        if (histX.length > TRAIL) { histX.shift(); histY.shift(); histE.shift(); }
+        if (drivePhaseX.length > TRAIL) { drivePhaseX.shift(); drivePhaseY.shift(); }
+      }
+      render();
+      animId = requestAnimationFrame(loop);
+    }
+
+    function reset() {
+      cancelAnimationFrame(animId);
+      initState();
+      running = true;
+      loop();
+    }
+
+    // Slider labels
+    ['k','x0','offset','speed'].forEach(id => {
+      const el = document.getElementById('slider-'+id);
+      const lbl = document.getElementById('val-'+id);
+      const fmt = id==='speed' ? v=>`${v}×` : v=>parseFloat(v).toFixed(2);
+      el.addEventListener('input', () => { lbl.textContent = fmt(el.value); });
+    });
+
+    // Play/pause
+    document.getElementById('btn-play').addEventListener('click', function() {
+      running = !running;
+      this.textContent = running ? '⏸ Pause' : '▶ Play';
+      if (running) loop();
+    });
+
+    document.getElementById('btn-reset').addEventListener('click', reset);
+
+    // Resize observer
+    new ResizeObserver(render).observe(document.getElementById('canvas-states'));
+
+    // Init
+    initState();
+    running = true;
+    loop();
+  })();
+  </script>
+</body>
+</html>

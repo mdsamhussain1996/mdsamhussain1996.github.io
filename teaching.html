@@ -3,45 +3,118 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Teaching - Dr. Md Samshad Hussain Ansari</title>
+  <title>Teaching — Dr. Md Samshad Hussain Ansari</title>
+  <meta name="description" content="Teaching portfolio of Dr. Md Samshad Hussain Ansari — courses at Newton School of Technology, BBA coordination, and the Maths for All open educational platform." />
+  <meta property="og:title" content="Teaching — Dr. Md Samshad Hussain Ansari" />
+  <meta property="og:type" content="website" />
   <link rel="stylesheet" href="css/style.css" />
   <script src="js/components.js" defer></script>
   <style>
-    .skills-grid {
+    .teaching-section { margin-bottom: 3.5rem; }
+
+    .course-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2.5rem;
-      margin-top: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
     }
-    .skill-group h3 {
-      font-size: 1.2rem;
-      color: var(--accent);
-      margin-bottom: 1rem;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 0.5rem;
+
+    .course-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+    .course-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--card-shadow); }
+
+    .course-icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+      display: block;
     }
-    .pill {
-      background: #f1f5f9;
-      color: var(--text-main);
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-      font-size: 0.85rem;
+
+    .course-name {
+      font-family: var(--font-serif);
+      font-size: 1rem;
       font-weight: 700;
-      border: 1px solid #e2e8f0;
+      color: var(--text-main);
+      margin-bottom: 0.35rem;
     }
-    .pill-accent {
-      background: var(--accent-light);
-      color: var(--accent);
-      border-color: #bee3f8;
+
+    .course-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.6rem;
     }
-    .teaching-experience {
-      margin-top: 4rem;
+
+    .course-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
     }
+
+    /* Maths for All banner */
+    .mfa-section {
+      margin-top: 3.5rem;
+      padding: 2.5rem;
+      background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+      border-radius: 14px;
+      color: white;
+    }
+    [data-theme="dark"] .mfa-section {
+      background: linear-gradient(135deg, #0a0f1a 0%, #111827 100%);
+      border: 1px solid var(--border-color);
+    }
+    .mfa-section h2 {
+      color: white;
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+    .mfa-section .tagline {
+      color: #90cdf4;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+    .mfa-section p { color: #a0aec0; line-height: 1.8; margin-bottom: 1rem; font-size: 0.95rem; }
+
+    .mfa-courses {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+    .mfa-course-item {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 1rem;
+      font-size: 0.88rem;
+      color: #e2e8f0;
+    }
+    .mfa-course-item strong { color: white; display: block; margin-bottom: 0.25rem; }
+
+    .mfa-stats {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin: 1.25rem 0;
+    }
+    .mfa-stat-num {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #90cdf4;
+    }
+    .mfa-stat-lbl { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: #718096; }
+
+
   </style>
 </head>
 <body>
@@ -50,101 +123,122 @@
   </div>
 
   <main>
-    <h1 class="page-title">Teaching & Expertise</h1>
-    
-    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-main);">
-      I bring extensive teaching experience spanning Linear Algebra, Engineering Mathematics, Data Science, and Complex Analysis from my time at IIT Mandi and currently as an Assistant Professor at Newton School of Technology. I am passionate about explaining complex mathematical structures with clarity and purpose.
-    </p>
+    <h1 class="page-title">Teaching</h1>
 
-    <div class="skills-grid">
-      <div class="skill-group">
-        <h3>Mathematical Expertise</h3>
-        <div class="pills">
-          <span class="pill pill-accent">Fractional Calculus</span>
-          <span class="pill pill-accent">Sliding Mode Control</span>
-          <span class="pill pill-accent">Lyapunov Stability</span>
-          <span class="pill pill-accent">Synchronisation Theory</span>
-          <span class="pill pill-accent">Quaternion Algebra</span>
-          <span class="pill pill-accent">Controllability Analysis</span>
-          <span class="pill pill-accent">Functional Analysis</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <h3>Courses Taught</h3>
-        <div class="pills">
-          <span class="pill">Linear Algebra</span>
-          <span class="pill">Engineering Mathematics</span>
-          <span class="pill">Complex Analysis</span>
-          <span class="pill">Probability & Statistics</span>
-          <span class="pill">Discrete Mathematics</span>
-          <span class="pill">ODEs & Integral Transforms</span>
-          <span class="pill">Data Science (DS301)</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <h3>Research Domains</h3>
-        <div class="pills">
-          <span class="pill pill-accent">Stochastic Synchronization</span>
-          <span class="pill pill-accent">Multi-Agent Consensus</span>
-          <span class="pill">Neural Networks</span>
-          <span class="pill">Dynamical Systems</span>
-          <span class="pill">Control Theory</span>
-          <span class="pill">Nonlinear Systems</span>
-          <span class="pill">Impulsive Systems</span>
-          <span class="pill">Fractional DEs</span>
-        </div>
-      </div>
-
-      <div class="skill-group">
-        <h3>Programming & Tools</h3>
-        <div class="pills">
-          <span class="pill">LaTeX</span>
-          <span class="pill">MATLAB</span>
-          <span class="pill">Python</span>
-          <span class="pill">NumPy / SciPy</span>
-          <span class="pill">Data Analytics</span>
-          <span class="pill">Deep Learning</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="teaching-experience">
-      <h2 class="section-title">Teaching Experience Overview</h2>
-      <div class="timeline" style="margin-top: 2rem;">
-        <div class="timeline-item">
-          <div class="timeline-date">2025 – Present</div>
-          <h3>Assistant Professor</h3>
-          <p style="font-weight:700; color:var(--text-muted); margin-bottom:0.5rem; font-size:0.9rem;">Newton School of Technology, Pune</p>
-          <p>Delivering comprehensive undergraduate courses in Discrete Mathematics, Probability & Statistics, Linear Algebra, Calculus, and Optimisation.</p>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">2023 – 2025</div>
-          <h3>Teaching Assistant</h3>
-          <p style="font-weight:700; color:var(--text-muted); margin-bottom:0.5rem; font-size:0.9rem;">IIT Mandi</p>
-          <p>Supported academic instruction for Linear Algebra, Engineering Mathematics, Ordinary Differential Equations, and Data Science.</p>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">2017 – 2021</div>
-          <h3>Subject Matter Expert</h3>
-          <p style="font-weight:700; color:var(--text-muted); margin-bottom:0.5rem; font-size:0.9rem;">Chegg Inc. & Course Hero</p>
-          <p>Provided detailed academic support in undergraduate and postgraduate mathematics, solving complex problems in Calculus, Differential Equations, and Probability for a global audience.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Maths for All Open Platform -->
-    <div style="margin-top:3.5rem; padding:2rem 2.5rem; background:linear-gradient(135deg,#ebf8ff,#f0f4ff); border:1px solid #bee3f8; border-radius:14px;">
-      <h2 style="font-size:1.35rem; color:#1a202c; margin-bottom:0.5rem;">📐 Maths for All &mdash; Open Educational Platform</h2>
-      <p style="color:var(--text-muted); font-size:0.95rem; line-height:1.75; max-width:700px; margin-bottom:1.5rem;">
-        I built and maintain <strong>Maths for All</strong>, a free interactive learning platform with comprehensive courses in Linear Algebra, Calculus, AI/ML Mathematics, Robotics, and Control Theory. Every topic follows a structured pedagogy: <em>intuition &rarr; worked example &rarr; formal theory &rarr; interactive visualization &rarr; real-world application</em>.
+    <!-- Newton School Courses -->
+    <section class="teaching-section" aria-labelledby="nst-heading">
+      <div class="section-label">Newton School of Technology, ADYPU, Pune</div>
+      <h2 id="nst-heading">Current Courses</h2>
+      <p style="color:var(--text-muted);font-size:0.95rem;margin-bottom:0.5rem">
+        As Assistant Professor (Mathematics) I teach the following courses.
+        <!-- TODO: Confirm exact course names, codes, and semester with your department -->
       </p>
-      <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
-        <a href="https://mdsamhussain1996.github.io/Mathsforall/" class="btn" target="_blank" rel="noopener">Explore the Platform &rarr;</a>
-        <a href="https://mdsamhussain1996.github.io/Mathsforall/linear-algebra.html" class="btn btn-outline" target="_blank" rel="noopener">Linear Algebra Course</a>
+
+      <div class="course-grid">
+        <div class="course-card">
+          <span class="course-icon" aria-hidden="true">📐</span>
+          <div class="course-name">Calculus and Differential Equations</div>
+          <div class="course-meta">B.Tech · Semester 1 &amp; 2</div><!-- TODO: Confirm semester -->
+          <div class="course-desc">
+            Limits, differentiation, integration, sequences and series, and ordinary differential equations.
+            Emphasis on conceptual understanding and engineering applications.
+          </div>
+        </div>
+
+        <div class="course-card">
+          <span class="course-icon" aria-hidden="true">📊</span>
+          <div class="course-name">Linear Algebra</div>
+          <div class="course-meta">B.Tech · Semester 2</div><!-- TODO: Confirm semester -->
+          <div class="course-desc">
+            Vector spaces, linear transformations, eigenvalues and eigenvectors, matrix decompositions,
+            and applications to machine learning and data science.
+          </div>
+        </div>
+
+        <div class="course-card">
+          <span class="course-icon" aria-hidden="true">🎲</span>
+          <div class="course-name">Probability and Statistics</div>
+          <div class="course-meta">B.Tech · Semester 3</div><!-- TODO: Confirm semester -->
+          <div class="course-desc">
+            Probability theory, random variables, distributions, hypothesis testing, and regression analysis
+            with applications in data science and engineering design.
+          </div>
+        </div>
+
+        <div class="course-card">
+          <span class="course-icon" aria-hidden="true">🔢</span>
+          <div class="course-name">Discrete Mathematics</div>
+          <div class="course-meta">B.Tech · TODO: Semester</div><!-- TODO: Confirm semester -->
+          <div class="course-desc">
+            Logic, sets, relations, graph theory, combinatorics, and number theory.
+            Applications to computer science and algorithm analysis.
+          </div>
+        </div>
+
+        <!-- TODO: Add any additional courses you teach -->
       </div>
-    </div>
+    </section>
+
+
+
+    <!-- Maths for All -->
+    <section class="teaching-section" aria-labelledby="mfa-heading">
+      <div class="mfa-section">
+        <div class="tagline">Open Educational Initiative</div>
+        <h2 id="mfa-heading">📐 Maths for All</h2>
+
+        <p>
+          <strong>Maths for All</strong> is an open, freely accessible educational platform I created and maintain,
+          aimed at making rigorous mathematics approachable for everyone — from school students and engineering
+          undergraduates to working professionals. The platform emphasises intuition-first explanations,
+          rich visualisations, and real-world applications, without sacrificing mathematical rigour.
+        </p>
+
+        <div class="mfa-stats">
+          <div>
+            <div class="mfa-stat-num">5+</div><!-- TODO: Update with real course count -->
+            <div class="mfa-stat-lbl">Courses</div>
+          </div>
+          <div>
+            <div class="mfa-stat-num">Free</div>
+            <div class="mfa-stat-lbl">Always</div>
+          </div>
+          <div>
+            <div class="mfa-stat-num">Open</div>
+            <div class="mfa-stat-lbl">Access</div>
+          </div>
+        </div>
+
+        <p><strong style="color:#e2e8f0">Target Audience:</strong> Undergraduate students, engineering graduates, and curious learners seeking a solid mathematical foundation with conceptual depth.</p>
+
+        <div class="mfa-courses">
+          <div class="mfa-course-item">
+            <strong>Linear Algebra</strong>
+            Vectors, matrices, eigenvalues, and applications to ML and data science.
+          </div>
+          <div class="mfa-course-item">
+            <strong>Calculus</strong>
+            Limits, derivatives, integration, and multivariable extensions with geometric intuition.
+          </div>
+          <div class="mfa-course-item">
+            <strong>Differential Equations</strong>
+            ODE and PDE theory with modelling applications.
+          </div>
+          <div class="mfa-course-item">
+            <strong>Probability &amp; Statistics</strong><!-- TODO: Confirm if this course exists on the platform -->
+            Statistical inference, distributions, and data analysis.
+          </div>
+          <div class="mfa-course-item">
+            <strong>TODO: Additional Course</strong><!-- TODO: Add any other platform courses -->
+            TODO: Course description.
+          </div>
+        </div>
+
+        <a href="https://mdsamhussain1996.github.io/Mathsforall/" class="btn" target="_blank" rel="noopener" style="margin-top:0.5rem">
+          Explore Maths for All →
+        </a>
+      </div>
+    </section>
   </main>
 
   <portfolio-footer></portfolio-footer>

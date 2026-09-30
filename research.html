@@ -3,101 +3,100 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Research - Dr. Md Samshad Hussain Ansari</title>
-  <meta name="description" content="Research themes and publications of Dr. Md Samshad Hussain Ansari. Stochastic synchronization, multi-agent consensus, fractional-order dynamical systems, quaternion neural networks." />
+  <title>Research — Dr. Md Samshad Hussain Ansari</title>
+  <meta name="description" content="Research of Dr. Md Samshad Hussain Ansari on fractional-order quaternion-valued neural networks, synchronization, controllability, and mathematical control theory." />
+  <meta property="og:title" content="Research — Dr. Md Samshad Hussain Ansari" />
+  <meta property="og:description" content="Research areas: fractional-order quaternion-valued neural networks, fixed-time synchronization, controllability, and image encryption applications." />
+  <meta property="og:type" content="website" />
   <link rel="stylesheet" href="css/style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
   <script src="js/components.js" defer></script>
   <style>
-    /* ── Research Theme Cards ── */
-    .research-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 1.5rem;
+    .research-area {
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .research-area:last-of-type { border-bottom: none; }
+
+    .research-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      background: var(--accent-light);
+      border: 1px solid var(--border-color);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+      font-family: var(--font-sans);
+    }
+
+    .research-area h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+
+    .research-area p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-size: 0.97rem;
+      line-height: 1.85;
+    }
+
+    .research-area p strong { color: var(--text-main); }
+
+    .keyword-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1rem;
+    }
+    .keyword {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.65rem;
+      background: var(--bg-alt);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      color: var(--text-muted);
+    }
+
+    .area-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .future-directions {
+      background: linear-gradient(135deg, var(--accent-light) 0%, var(--bg-alt) 100%);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+      padding: 2rem;
       margin-top: 2rem;
     }
-    .research-card {
-      background: var(--bg-alt);
-      border: 1px solid var(--border-color);
-      padding: 2rem;
-      border-radius: 12px;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      position: relative;
-      overflow: hidden;
+    .future-directions h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
     }
-    .research-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 4px;
-      background: linear-gradient(90deg, #2c5282, #4299e1);
-      opacity: 0;
-      transition: opacity 0.25s ease;
-    }
-    .research-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.07); }
-    .research-card:hover::before { opacity: 1; }
-    .research-card.new-work { border-color: #bee3f8; background: linear-gradient(135deg, #ebf8ff 0%, #ffffff 60%); }
-    .research-card.new-work::before { opacity: 1; background: linear-gradient(90deg, #2b6cb0, #63b3ed); }
-    .new-badge {
-      display: inline-block;
-      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase; color: white;
-      background: #2c5282; padding: 0.2rem 0.6rem;
-      border-radius: 20px; margin-bottom: 0.75rem;
-    }
-    .research-icon {
-      font-size: 2.2rem;
-      color: #2c5282;
-      margin-bottom: 0.9rem;
-      font-family: var(--font-serif);
-      font-style: italic;
-      line-height: 1;
-    }
-    .research-title { font-size: 1.1rem; margin-bottom: 0.75rem; color: #1a202c; }
-    .research-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.65; }
-
-    /* ── Metrics Bar ── */
-    .pub-metrics {
+    .future-item {
       display: flex;
-      gap: 0;
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      overflow: hidden;
-      margin-bottom: 3rem;
-      background: var(--bg-alt);
+      gap: 1rem;
+      margin-bottom: 0.85rem;
+      font-size: 0.95rem;
+      color: var(--text-main);
     }
-    .metric-item {
-      flex: 1;
-      padding: 1.25rem 1rem;
-      text-align: center;
-      border-right: 1px solid var(--border-color);
-    }
-    .metric-item:last-child { border-right: none; }
-    .metric-num { font-family: var(--font-serif); font-size: 2rem; font-weight: 700; color: #2c5282; line-height: 1; }
-    .metric-lbl { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-top: 0.3rem; font-weight: 700; }
-
-    /* ── Publications ── */
-    .pub-item { padding: 1.5rem 0; border-bottom: 1px solid var(--border-color); }
-    .pub-item:last-child { border-bottom: none; }
-    .pub-title { font-weight: 700; color: #1a202c; margin-bottom: 0.3rem; line-height: 1.45; }
-    .pub-authors { font-size: 0.92rem; color: var(--text-main); margin-bottom: 0.25rem; }
-    .pub-journal { font-size: 0.83rem; color: var(--text-muted); font-style: italic; }
-    .pub-badges { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
-    .badge-topic {
-      display: inline-block; padding: 0.15rem 0.55rem; font-size: 0.7rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.05em; border-radius: 4px;
-      background: #f1f5f9; color: var(--text-muted); border: 1px solid var(--border-color);
-    }
-    .badge-topic.sync { background: #ebf8ff; color: #2b6cb0; border-color: #bee3f8; }
-    .badge-topic.ctrl { background: #f0fff4; color: #276749; border-color: #c6f6d5; }
-    .badge-topic.frac { background: #fff5f5; color: #c53030; border-color: #fed7d7; }
-    .badge-topic.quat { background: #faf5ff; color: #6b46c1; border-color: #e9d8fd; }
-    .doi-link { font-size: 0.78rem; color: #2c5282; font-weight: 700; margin-top: 0.35rem; display: inline-block; }
-
-    @media(max-width:600px) {
-      .pub-metrics { flex-direction: column; }
-      .metric-item { border-right: none; border-bottom: 1px solid var(--border-color); }
-      .metric-item:last-child { border-bottom: none; }
+    .future-item::before {
+      content: '→';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
     }
   </style>
 </head>
@@ -108,187 +107,177 @@
 
   <main>
     <h1 class="page-title">Research</h1>
-    <p style="margin-bottom:2rem; font-size:1.05rem; color:var(--text-main); line-height:1.85; max-width:800px;">
-      My research develops rigorous theoretical frameworks for the analysis and control of complex dynamical systems. Current focus areas include <strong>synchronization of stochastic systems</strong> and <strong>consensus of multi-agent networks</strong>, alongside established work in fractional-order systems and quaternion-valued neural networks.
+    <p style="color:var(--text-muted);font-size:1rem;margin-bottom:3rem;line-height:1.8">
+      My research lies at the intersection of <strong>fractional calculus</strong>, <strong>dynamical systems theory</strong>,
+      and <strong>neural network mathematics</strong>. I study how complex interconnected systems synchronize, and how
+      fractional-order operators—which encode memory and hereditary effects—can be exploited to understand and control
+      this emergent behaviour. Below I describe my core research threads.
     </p>
 
-    <!-- Publication Metrics -->
-    <div class="pub-metrics">
-      <div class="metric-item">
-        <div class="metric-num">7</div>
-        <div class="metric-lbl">Journal Papers</div>
-      </div>
-      <div class="metric-item">
-        <div class="metric-num">1</div>
-        <div class="metric-lbl">Book Chapter</div>
-      </div>
-      <div class="metric-item">
-        <div class="metric-num">1</div>
-        <div class="metric-lbl">Under Review</div>
-      </div>
-      <div class="metric-item">
-        <div class="metric-num">150+</div>
-        <div class="metric-lbl">Citations</div>
-      </div>
-      <div class="metric-item">
-        <div class="metric-num">5</div>
-        <div class="metric-lbl">Research Areas</div>
-      </div>
-    </div>
+    <!-- ── Area 1 ── -->
+    <section class="research-area" aria-labelledby="area1-heading">
+      <span class="area-icon" aria-hidden="true">🧠</span>
+      <div class="research-tag">Primary Research Area</div>
+      <h2 id="area1-heading">Fractional-Order Quaternion-Valued Neural Networks</h2>
 
-    <!-- Research Theme Cards -->
-    <h2 style="font-size:1.6rem; margin-bottom:0.5rem;">Research Themes</h2>
-    <div class="research-grid">
-
-      <!-- NEW: Stochastic Sync -->
-      <div class="research-card new-work">
-        <div class="new-badge">🔬 Current Work</div>
-        <div class="research-icon">𝒲</div>
-        <h3 class="research-title">Stochastic Synchronization</h3>
-        <p class="research-desc">Analysis of synchronization in stochastic differential systems under Brownian motion and Lévy noise perturbations, linking Lyapunov methods with stochastic stability criteria for uncertain neural networks.</p>
+      <p>
+        <strong>The problem.</strong> Classical neural network models use real- or complex-valued weights and states.
+        Quaternion-valued networks extend this to four-dimensional hypercomplex space, enabling a single neuron to encode
+        multi-dimensional structured data (e.g., 3-D rotations, colour images). When the network dynamics are governed
+        by a fractional-order derivative—a derivative of non-integer order that captures long-range temporal memory—the
+        resulting system is richer but far harder to analyse than its integer-order counterpart.
+      </p>
+      <p>
+        <strong>My contribution.</strong> My PhD thesis (IIT Mandi, 2021–2025, supervised by Prof. Muslim Malik)
+        developed a systematic framework for studying the stability and synchronization of such systems. I established
+        novel Lyapunov-based stability criteria by decomposing quaternion systems into four real-valued sub-systems,
+        avoiding the non-commutativity pitfall of quaternion algebra. The resulting conditions are expressed as
+        linear-matrix inequalities (LMIs) that can be checked efficiently.
+      </p>
+      <p>
+        <strong>What's next.</strong> I am extending the framework to stochastic fractional-order quaternion networks
+        driven by Lévy noise, and to architectures with reaction-diffusion terms—capturing spatial heterogeneity in
+        neuromorphic hardware.
+      </p>
+      <div class="keyword-list">
+        <span class="keyword">Fractional Calculus</span>
+        <span class="keyword">Quaternion Algebra</span>
+        <span class="keyword">Lyapunov Stability</span>
+        <span class="keyword">LMI Methods</span>
+        <span class="keyword">Long-Memory Dynamics</span>
       </div>
+    </section>
 
-      <!-- NEW: Multi-Agent Consensus -->
-      <div class="research-card new-work">
-        <div class="new-badge">🔬 Current Work</div>
-        <div class="research-icon">𝒢</div>
-        <h3 class="research-title">Consensus of Multi-Agent Systems</h3>
-        <p class="research-desc">Designing distributed consensus protocols for heterogeneous multi-agent networks under switching graph topologies, communication time delays, and stochastic disturbances — leader-follower and leaderless scenarios.</p>
+    <!-- ── Area 2 ── -->
+    <section class="research-area" aria-labelledby="area2-heading">
+      <span class="area-icon" aria-hidden="true">🔄</span>
+      <div class="research-tag">Synchronization Theory</div>
+      <h2 id="area2-heading">Fixed-Time &amp; Projective Synchronization — with an Image-Encryption Application</h2>
+
+      <p>
+        <strong>The problem.</strong> Synchronization asks: when does a response system track a drive system's trajectory,
+        regardless of initial conditions? <em>Projective synchronization</em> generalizes this: the response converges
+        to a scaled version of the drive. <em>Fixed-time synchronization</em> adds the requirement that convergence
+        occurs within a settling time that is independent of initial conditions—a critical property for real-time applications.
+      </p>
+      <p>
+        <strong>My contribution.</strong> I derived fixed-time and projective synchronization controllers for
+        fractional-order quaternion-valued networks using both feedback and adaptive control strategies. A key
+        application: because synchronized chaotic systems share a secret keystream, I demonstrated a secure
+        image-encryption scheme where the synchronization error acts as the encryption signal. Encryption keys
+        are never transmitted; only the chaotic drive signal is shared.
+      </p>
+      <p>
+        <strong>What's next.</strong> I am investigating event-triggered fixed-time synchronization to reduce
+        communication overhead, and exploring robustness guarantees under network attacks.
+      </p>
+      <div class="keyword-list">
+        <span class="keyword">Fixed-Time Stability</span>
+        <span class="keyword">Projective Synchronization</span>
+        <span class="keyword">Chaos-Based Cryptography</span>
+        <span class="keyword">Adaptive Control</span>
+        <span class="keyword">Image Encryption</span>
       </div>
+    </section>
 
-      <div class="research-card">
-        <div class="research-icon">∂</div>
-        <h3 class="research-title">Fractional-Order Dynamics</h3>
-        <p class="research-desc">Prabhakar, φ-Caputo, and Mittag-Leffler kernel frameworks for modelling systems with memory. Controllability and stability of multi-term impulsive fractional systems.</p>
+    <!-- ── Area 3 ── -->
+    <section class="research-area" aria-labelledby="area3-heading">
+      <span class="area-icon" aria-hidden="true">🎮</span>
+      <div class="research-tag">Control Theory</div>
+      <h2 id="area3-heading">Controllability of Fractional-Order Systems</h2>
+
+      <p>
+        <strong>The problem.</strong> Controllability asks whether a system can be steered from any initial state
+        to any target state by a suitable input in finite time. For fractional-order systems, the semi-group property
+        is lost, making classical controllability arguments inapplicable. The challenge intensifies with impulsive
+        effects (sudden state jumps) or stochastic disturbances.
+      </p>
+      <p>
+        <strong>My contribution.</strong> Using fixed-point theorems (Schauder, Krasnoselskii) and operator-theory
+        methods, I derived sufficient conditions for exact and approximate controllability of fractional-order
+        integro-differential, stochastic, and impulsive systems in Banach spaces, in collaboration with
+        Prof. Juan J. Nieto (University of Santiago de Compostela) and Prof. Dumitru Baleanu (Lebanese American University).
+      </p>
+      <p>
+        <strong>What's next.</strong> I am applying these ideas to <em>LLM-negotiation swarms</em>—networks of
+        large-language-model agents whose consensus state can be modelled as a nonlinear fractional-order dynamical
+        system—to understand when such swarms are provably steerable to a desired collective decision.
+      </p>
+      <div class="keyword-list">
+        <span class="keyword">Exact Controllability</span>
+        <span class="keyword">Approximate Controllability</span>
+        <span class="keyword">Fixed-Point Theory</span>
+        <span class="keyword">Banach Spaces</span>
+        <span class="keyword">Multi-Agent Systems</span>
       </div>
+    </section>
 
-      <div class="research-card">
-        <div class="research-icon">ℍ</div>
-        <h3 class="research-title">Quaternion-Valued Neural Networks</h3>
-        <p class="research-desc">Finite-time, projective, quasi-projective, and adaptive synchronization of fractional quaternion-valued neural networks using sliding mode control and Lyapunov methods.</p>
+    <!-- ── Area 4 ── -->
+    <section class="research-area" aria-labelledby="area4-heading">
+      <span class="area-icon" aria-hidden="true">⚡</span>
+      <div class="research-tag">Impulsive Systems</div>
+      <h2 id="area4-heading">Controllability of Second-Order Impulsive Systems</h2>
+
+      <p>
+        <strong>The problem.</strong> Many engineering systems—mechanical vibrations, population models with
+        harvesting, electrical circuits with switching—are modelled by second-order differential equations subject
+        to impulsive perturbations (instantaneous state resets). Controlling such systems requires results that
+        account for both the continuous dynamics and the impulsive moments.
+      </p>
+      <p>
+        <strong>My contribution.</strong> Using cosine family operator theory and compact semigroup arguments,
+        I established controllability criteria for second-order impulsive differential equations in abstract
+        Banach spaces. The results unify and improve several existing results in the literature by relaxing
+        compactness assumptions and incorporating non-local initial conditions.
+      </p>
+      <p>
+        <strong>What's next.</strong> Extensions to fractional second-order impulsive systems and networked
+        impulsive control with random impulsive times are in preparation.
+      </p>
+      <div class="keyword-list">
+        <span class="keyword">Second-Order Systems</span>
+        <span class="keyword">Impulsive Control</span>
+        <span class="keyword">Cosine Families</span>
+        <span class="keyword">Non-Local Conditions</span>
       </div>
+    </section>
 
-      <div class="research-card">
-        <div class="research-icon">⊛</div>
-        <h3 class="research-title">Mathematical Control Theory</h3>
-        <p class="research-desc">Controllability analysis of Prabhakar and Langevin dynamical systems with non-instantaneous impulses. Extensions to multi-agent and switched system architectures.</p>
+    <!-- ── Future Directions ── -->
+    <section aria-labelledby="future-heading">
+      <div class="future-directions">
+        <h2 id="future-heading">Future Directions</h2>
+        <div class="future-item">
+          <span>
+            <strong>Stochastic fractional neural networks:</strong> Extending synchronization theory to
+            quaternion-valued networks driven by Brownian motion and Lévy jump processes.
+          </span>
+        </div>
+        <div class="future-item">
+          <span>
+            <strong>Reaction-diffusion neural networks:</strong> Incorporating spatial coupling terms to model
+            neuromorphic hardware and biological neural tissue.
+          </span>
+        </div>
+        <div class="future-item">
+          <span>
+            <strong>Event-triggered control:</strong> Designing aperiodic control laws that achieve fixed-time
+            synchronization with minimal communication overhead.
+          </span>
+        </div>
+        <div class="future-item">
+          <span>
+            <strong>LLM-negotiation swarms:</strong> Applying fractional-order consensus theory to understand
+            the controllability of networks of language-model agents.
+          </span>
+        </div>
+        <div class="future-item">
+          <span>
+            <strong>Optimal control &amp; learning:</strong> Integrating reinforcement-learning policies with
+            fractional-order system constraints for data-driven control of complex networks.
+          </span>
+        </div>
       </div>
-
-      <div class="research-card">
-        <div class="research-icon">𝛹</div>
-        <h3 class="research-title">Nonlinear Dynamical Systems</h3>
-        <p class="research-desc">Stability and qualitative analysis of nonlinear ODEs and functional differential equations, including competitive, inertial, and recurrent neural architectures with fractional-order dynamics.</p>
-      </div>
-    </div>    <!-- Publications -->
-    <h1 class="page-title" style="margin-top:4rem;">Publications</h1>
-
-    <div class="pub-item">
-      <div class="pub-badges">
-        <span class="badge badge-year">2025</span>
-        <span class="badge-topic sync">Synchronization</span>
-        <span class="badge-topic quat">Quaternion</span>
-      </div>
-      <div class="pub-title">Mittag-Leffler and Asymptotic Adaptive Projective Synchronization of Fractional Inertial Neural Networks in Quaternion Field</div>
-      <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik, Juan J. Nieto</div>
-      <div class="pub-journal">The European Physical Journal Plus 140(9)</div>
-      <a class="doi-link" href="https://doi.org/10.1140/epjp/s13360-025-06840-w" target="_blank" rel="noopener">DOI: 10.1140/epjp/s13360-025-06840-w ↗</a>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-badges">
-        <span class="badge badge-year">2025</span>
-        <span class="badge-topic ctrl">Control</span>
-        <span class="badge-topic frac">Fractional</span>
-      </div>
-      <div class="pub-title">Controllability of Multi-Term Fractional Order Impulsive Dynamical Systems with φ-Caputo Fractional Derivative</div>
-      <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik</div>
-      <div class="pub-journal">Fractional Calculus and Applied Analysis 28</div>
-      <a class="doi-link" href="https://doi.org/10.1007/s13540-025-00393-6" target="_blank" rel="noopener">DOI: 10.1007/s13540-025-00393-6 ↗</a>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-badges">
-        <span class="badge badge-year">2025</span>
-        <span class="badge-topic sync">Synchronization</span>
-        <span class="badge-topic quat">Quaternion</span>
-        <span class="badge-topic frac">Fractional</span>
-      </div>
-      <div class="pub-title">Projective Synchronization of Fractional-Order Quaternion-Valued Neural Networks with Mittag-Leffler Kernel</div>
-      <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik, Juan J. Nieto</div>
-      <div class="pub-journal">International Journal of General Systems</div>
-      <a class="doi-link" href="https://doi.org/10.1080/03081079.2025.2457550" target="_blank" rel="noopener">DOI: 10.1080/03081079.2025.2457550 ↗</a>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-badges">
-        <span class="badge badge-year">2024</span>
-        <span class="badge-topic sync">Synchronization</span>
-        <span class="badge-topic quat">Quaternion</span>
-      </div>
-      <div class="pub-title">Quasi-Projective Synchronization of Nonidentical Fractional-Order Neural Networks with Inconsistent Orders in Quaternion Field</div>
-      <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik</div>
-      <div class="pub-journal">Physica Scripta 100(1)</div>
-      <a class="doi-link" href="https://doi.org/10.1088/1402-4896/ad9c26" target="_blank" rel="noopener">DOI: 10.1088/1402-4896/ad9c26 ↗</a>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-badges">
-        <span class="badge badge-year">2024</span>
-        <span class="badge-topic sync">Synchronization</span>
-        <span class="badge-topic ctrl">Sliding Mode</span>
-      </div>
-      <div class="pub-title">Finite-Time Synchronization of Fractional Order Uncertain Quaternion-Valued Neural Networks via Sliding Mode Control</div>
-      <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik</div>
-      <div class="pub-journal">International Journal of Computer Mathematics 101(7)</div>
-      <a class="doi-link" href="https://doi.org/10.1080/00207160.2024.2383198" target="_blank" rel="noopener">DOI: 10.1080/00207160.2024.2383198 ↗</a>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-badges">
-        <span class="badge badge-year">2024</span>
-        <span class="badge-topic sync">Synchronization</span>
-        <span class="badge-topic quat">Quaternion</span>
-      </div>
-      <div class="pub-title">Projective Synchronization of Fractional Order Quaternion Valued Uncertain Competitive Neural Networks</div>
-      <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik</div>
-      <div class="pub-journal">Chinese Journal of Physics 88</div>
-      <a class="doi-link" href="https://doi.org/10.1016/j.cjph.2024.02.032" target="_blank" rel="noopener">DOI: 10.1016/j.cjph.2024.02.032 ↗</a>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-badges">
-        <span class="badge badge-year">2024</span>
-        <span class="badge-topic ctrl">Control</span>
-        <span class="badge-topic frac">Fractional</span>
-      </div>
-      <div class="pub-title">Controllability of Prabhakar Fractional Dynamical Systems</div>
-      <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik, Dumitru Baleanu</div>
-      <div class="pub-journal">Qualitative Theory of Dynamical Systems 23(2)</div>
-      <a class="doi-link" href="https://doi.org/10.1007/s12346-023-00919-4" target="_blank" rel="noopener">DOI: 10.1007/s12346-023-00919-4 ↗</a>
-    </div>
-
-    <h2 style="margin-top:3rem; margin-bottom:1.25rem; color:var(--accent);">Book Chapters &amp; Preprints</h2>
-
-    <div class="pub-item">
-      <div class="pub-badges">
-        <span class="badge badge-chapter">Book Chapter</span>
-        <span class="badge-topic frac">Fractional</span>
-      </div>
-      <div class="pub-title">Terminal Value Problem of Prabhakar Fractional Differential Equation</div>
-      <div class="pub-authors">Md Samshad Hussain Ansari, Muslim Malik</div>
-      <div class="pub-journal">Continuous and Discrete Dynamics: Theory and Applications · Springer (Accepted)</div>
-    </div>
-
-    <div class="pub-item">
-      <div class="pub-badges">
-        <span class="badge badge-review">Under Review</span>
-        <span class="badge-topic sync">Synchronization</span>
-        <span class="badge-topic ctrl">Sliding Mode</span>
-      </div>
-      <div class="pub-title">Synchronization of Nonidentical Quaternion-Valued Inertial Neural Networks with Different Fractional-Orders via Sliding Mode Control</div>
-      <div class="pub-authors">Md Samshad Hussain Ansari</div>
-      <div class="pub-journal">Under Review</div>
-    </div>
+    </section>
   </main>
 
   <portfolio-footer></portfolio-footer>
