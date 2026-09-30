@@ -203,24 +203,6 @@
   <main>
     <h1 class="page-title">Publications</h1>
 
-    <!-- Stats bar -->
-    <div class="pub-stats">
-      <div class="pub-stat">
-        <span class="pub-stat-num" id="total-count">—</span>
-        <span class="pub-stat-lbl">Papers</span>
-      </div>
-      <div class="pub-stat">
-        <a href="https://scholar.google.com/citations?user=3b2jd4EAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" style="text-decoration:none">
-          <span class="pub-stat-num">150+</span><!-- TODO: Update citation count -->
-          <span class="pub-stat-lbl">Citations ↗</span>
-        </a>
-      </div>
-      <div class="pub-stat">
-        <span class="pub-stat-num" id="year-range">—</span>
-        <span class="pub-stat-lbl">Year range</span>
-      </div>
-    </div>
-
     <!-- ── Selected Works ── -->
     <section class="selected-section" aria-labelledby="selected-heading">
       <div class="section-label" id="selected-heading">⭐ Selected Works</div>
@@ -261,8 +243,6 @@
 
     const list = document.getElementById('pub-list');
     const selectedList = document.getElementById('selected-list');
-    const totalCount = document.getElementById('total-count');
-    const yearRange = document.getElementById('year-range');
     const noResults = document.getElementById('no-results');
 
     let activeYear = 'all';
@@ -349,10 +329,8 @@
       setTimeout(() => toast.classList.remove('show'), 2200);
     }
 
-    // Stats
+    // Years for filter buttons
     const years = [...new Set(PUBLICATIONS.map(p => p.year))].sort((a,b) => b - a);
-    totalCount.textContent = PUBLICATIONS.length;
-    if (years.length) yearRange.textContent = `${years[years.length-1]}–${years[0]}`;
 
     // Year filter buttons
     const yearContainer = document.getElementById('year-filter-btns');

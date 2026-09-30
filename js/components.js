@@ -20,7 +20,7 @@ class PortfolioNavbar extends HTMLElement {
       { href: 'research.html',     label: 'Research' },
       { href: 'publications.html', label: 'Publications' },
       { href: 'teaching.html',     label: 'Teaching' },
-      { href: 'demos.html',        label: 'Demos' },
+      { href: 'projects.html',     label: 'Projects' },
       { href: 'cv.html',           label: 'CV' },
       { href: 'contact.html',      label: 'Contact' },
     ];
