@@ -94,10 +94,10 @@ class PortfolioFooter extends HTMLElement {
           <div class="footer-name">Dr. Md Samshad Hussain Ansari</div>
           <div class="footer-title">Assistant Professor &middot; Newton School of Technology, ADYPU, Pune</div>
           <nav class="footer-links" aria-label="Social and contact links">
-            <a href="mailto:mdsambussain1996@gmail.com" aria-label="Email">&#128231; Email</a>
+            <a href="mailto:mdsamhussain1996@gmail.com" aria-label="Email">&#128231; Email</a>
             <a href="https://scholar.google.com/citations?user=3b2jd4EAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">&#127891; Scholar</a>
             <a href="https://www.researchgate.net/profile/Md-Samshad-Ansari?ev=hdr_xprf" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate">&#128202; ResearchGate</a>
-            <a href="https://orcid.org/TODO-ORCID" target="_blank" rel="noopener noreferrer" aria-label="ORCID">&#128279; ORCID<!-- TODO: Replace TODO-ORCID --></a>
+            <a href="https://orcid.org/0000-0002-7757-3216" target="_blank" rel="noopener noreferrer" aria-label="ORCID">&#128279; ORCID</a>
             <a href="https://github.com/mdsamhussain1996" target="_blank" rel="noopener noreferrer" aria-label="GitHub">&#128187; GitHub</a>
           </nav>
           <div class="footer-copy">&copy; ${year} Dr. Md Samshad Hussain Ansari. All rights reserved.</div>
