@@ -3,17 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Projects - Dr. Md Samshad Hussain Ansari</title>
+  <title>Projects — Dr. Md Samshad Hussain Ansari</title>
+  <meta name="description" content="Academic and scientific software projects developed by Dr. Md Samshad Hussain Ansari." />
   <link rel="stylesheet" href="css/style.css" />
   <script src="js/components.js" defer></script>
   <style>
-    .placeholder-message {
-      text-align: center;
-      padding: 6rem 2rem;
+    .project-card {
       background: var(--bg-alt);
-      border: 1px dashed var(--border-color);
-      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--card-shadow);
+    }
+    .project-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      background: var(--accent-light);
+      border: 1px solid var(--border-color);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-family: var(--font-sans);
+      width: fit-content;
+    }
+    .project-title {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      color: var(--text-main);
+      margin: 0;
+    }
+    .project-desc {
+      font-size: 0.95rem;
       color: var(--text-muted);
+      line-height: 1.7;
+      margin: 0;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .project-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.65rem;
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      color: var(--text-muted);
+    }
+    .project-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
     }
   </style>
 </head>
@@ -23,12 +79,60 @@
   </div>
 
   <main>
-    <h1 class="page-title">Projects</h1>
-    <div class="placeholder-message">
-      <h2>Coming Soon</h2>
-      <p style="margin-top: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.8;">
-        This section is currently being updated with academic projects, MATLAB simulations, and Python implementations related to stochastic dynamical systems, multi-agent consensus, and fractional-order neural networks.
+    <h1 class="page-title">Projects &amp; Software</h1>
+    <p style="color:var(--text-muted);font-size:1rem;margin-bottom:2.5rem;line-height:1.8">
+      Open-source scientific computing tools, interactive visualization platforms, and educational resources developed to support research in fractional-order dynamical systems, neural network synchronization, and mathematics education.
+    </p>
+
+    <!-- Project 1: FracSync Lab -->
+    <div class="project-card" style="border-left: 4px solid #C4901F;">
+      <div class="project-badge" style="color:#C4901F;background:rgba(196,144,31,0.1);border-color:#C4901F;">
+        <span>🔐</span> Interactive Research Software
+      </div>
+      <h2 class="project-title">FracSync Lab — Fractional-Order Network Synchronization Bench</h2>
+      <p class="project-desc">
+        A single-file browser laboratory for drive–response synchronization of Caputo fractional-order dynamical systems discretized via the Adams–Bashforth–Moulton predictor–corrector scheme (Diethelm, Ford, Freed). Features 18 dynamical systems across three families (3D/4D chaotic attractors, multi-neuron real neural networks, and 8D quaternion-valued neural networks in &Popf;), 5 feedback controllers (Linear, Fixed-time, Sliding mode, Adaptive gain, Impulsive), an inline non-blocking Web Worker engine with progress reporting, customizable time span <em>T</em> and step <em>h</em>, real-time phase portraits, and reproducible Python code generation.
       </p>
+      <div class="project-tags">
+        <span class="project-tag">Fractional Calculus</span>
+        <span class="project-tag">Adams–Bashforth–Moulton</span>
+        <span class="project-tag">Caputo Derivative</span>
+        <span class="project-tag">Quaternion Networks (ℍ)</span>
+        <span class="project-tag">Chaos Synchronization</span>
+        <span class="project-tag">Web Workers</span>
+        <span class="project-tag">NumPy Engine</span>
+      </div>
+      <div class="project-actions">
+        <a href="https://mdsamhussain1996.github.io/fracsync-lab/" target="_blank" rel="noopener" class="btn" style="background:#C4901F;border-color:#7A5208;color:#20160A;font-weight:700;">
+          Launch Simulator ↗
+        </a>
+        <a href="https://github.com/mdsamhussain1996/fracsync-lab" target="_blank" rel="noopener" class="btn btn-outline">
+          GitHub Repository ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- Project 2: Maths for All -->
+    <div class="project-card" style="border-left: 4px solid var(--accent);">
+      <div class="project-badge">
+        <span>📐</span> Open Educational Platform
+      </div>
+      <h2 class="project-title">Maths for All — Open Educational Mathematics Platform</h2>
+      <p class="project-desc">
+        A free, open-access educational initiative offering intuitive, visualization-rich courses across undergraduate and graduate mathematics, including Linear Algebra, Multivariable Calculus, Real Analysis, and Differential Equations. Focuses on bridging theoretical rigor with computational intuition and real-world scientific applications.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Linear Algebra</span>
+        <span class="project-tag">Calculus</span>
+        <span class="project-tag">Differential Equations</span>
+        <span class="project-tag">Interactive Math Education</span>
+        <span class="project-tag">Open Access</span>
+      </div>
+      <div class="project-actions">
+        <a href="https://mdsamhussain1996.github.io/Mathsforall/" target="_blank" rel="noopener" class="btn">
+          Explore Maths for All ↗
+        </a>
+      </div>
     </div>
   </main>
 
